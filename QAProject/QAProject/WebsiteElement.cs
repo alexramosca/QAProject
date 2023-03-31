@@ -7,14 +7,12 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using MySql.Data.MySqlClient;
+
 namespace QAProject
 {
-    internal class Program
+    internal class WebsiteElement
     {
-        static void Main(string[] args)
-        {
-            //Add the call for the tests on SiteTests class
-            
-        }
+        //Add Webelements here, each method must have a webdriver called driver as argument
+
     }
 }

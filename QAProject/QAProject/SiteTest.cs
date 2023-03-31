@@ -7,14 +7,11 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using MySql.Data.MySqlClient;
+
 namespace QAProject
 {
-    internal class Program
+    internal class SiteTest
     {
-        static void Main(string[] args)
-        {
-            //Add the call for the tests on SiteTests class
-            
-        }
+        //Add the tests and the structures used by the tests
     }
 }
