@@ -11,10 +11,42 @@ namespace QAProject
 {
     internal class Program
     {
+        private static MySqlConnection connection;
         static void Main(string[] args)
         {
             //Add the call for the tests on SiteTests class
-            
+
+            //reset the website
+           // SiteReset();
+
+            //driver used on the project
+            IWebDriver driver = new ChromeDriver(@"c:\Selenium"); //Careful with the path of your driver.
+
+            driver.Url = "http://10.157.123.12/site3/Login.php"; //opening and closing just to make sure it works
+
+
+
+
+            Thread.Sleep(5000);
+            driver.Quit();
+
+
         }
+
+        public static void SiteReset()
+        {
+            string myConnectionString = "server=10.157.123.12;database=bitter-site4;uid=site4;pwd=KgpRPAIfliuGXxM8;";
+            connection = new MySqlConnection(myConnectionString);
+            MySqlCommand command = new MySqlCommand();
+
+            command.Connection = connection;
+            command.CommandText = "reset";
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+
     }
 }
