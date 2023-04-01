@@ -47,6 +47,11 @@ namespace QAProject
             IWebElement element = driver.FindElement(By.CssSelector("body > div > div > div:nth-child(2) > p > a"));
             return element;
         }
+        public static IWebElement btnLogin(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.Id("button"));
+            return element;
+        }
 
         // Sign Up Page
 
@@ -108,6 +113,11 @@ namespace QAProject
         public static IWebElement txtLocation(IWebDriver driver)
         {
             IWebElement element = driver.FindElement(By.Id("location"));
+            return element;
+        }
+        public static IWebElement btnRegister(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.Id("button"));
             return element;
         }
 
