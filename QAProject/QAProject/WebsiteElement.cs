@@ -65,12 +65,12 @@ namespace QAProject
             IWebElement element = driver.FindElement(By.Id("email"));
             return element;
         }
-        public static IWebElement txtScreenName(IWebDriver driver)
+        public static IWebElement txtSignUpScreenName(IWebDriver driver)
         {
             IWebElement element = driver.FindElement(By.Id("username"));
             return element;
         }
-        public static IWebElement txtPassword(IWebDriver driver)
+        public static IWebElement txtSignUpPassword(IWebDriver driver)
         {
             IWebElement element = driver.FindElement(By.Id("password"));
             return element;
