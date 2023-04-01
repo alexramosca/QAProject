@@ -55,6 +55,11 @@ namespace QAProject
 
         // Sign Up Page
 
+        public static IWebElement menuIndexLink(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > a"));
+            return element;
+        }
         public static IWebElement txtFirstName(IWebDriver driver)
         {
             IWebElement element = driver.FindElement(By.Id("firstname"));
@@ -158,6 +163,16 @@ namespace QAProject
         public static IWebElement btnProfile(IWebDriver driver)
         {
             IWebElement element = driver.FindElement(By.Id("dropdown01"));
+            return element;
+        }
+        public static IWebElement btnLogOut(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > li > div > a:nth-child(1)"));
+            return element;
+        }
+        public static IWebElement btnEditProfile(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > li > div > a:nth-child(2)"));
             return element;
         }
 
