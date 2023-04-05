@@ -35,7 +35,7 @@ namespace QAProject
 
         public static void SiteReset()
         {
-            string myConnectionString = "server=10.157.123.12;database=bitter-site4;uid=site4;pwd=KgpRPAIfliuGXxM8;";
+            string myConnectionString = "server=10.157.123.12;database=bitter-site4;uid=site3;pwd=KgpRPAIfliuGXxM8;";
             connection = new MySqlConnection(myConnectionString);
             MySqlCommand command = new MySqlCommand();
 
