@@ -239,5 +239,26 @@ namespace QAProject
             return element;
         }
 
+
+        public static IWebElement profilePictureTrump(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#dropdown01"));
+            return element;
+        }
+        public static IWebElement profilePicture(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > li > div > a:nth-child(2)"));
+            return element; 
+        }
+
+        public static IWebElement submitPhoto(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.Id("button"));
+            return element;
+        }
+
+
+
+
     }
 }

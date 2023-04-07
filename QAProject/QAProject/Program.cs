@@ -92,6 +92,7 @@ namespace QAProject
             }
            */
 
+            /*
             bool MESSAGE03 = SiteTest.MESSAGE03(driver);
 
             if (MESSAGE03)// TEST SENDING A VALID MESSAGE 
@@ -104,9 +105,25 @@ namespace QAProject
                 Console.WriteLine("TEST TO CURRENT LOGGED IN USER: FAILED");
 
             }
+            */
 
+            
+            bool PHOTO01 = SiteTest.PHOTO01(driver);
 
-            Thread.Sleep(5000);
+            if (PHOTO01)// TEST SENDING A VALID MESSAGE 
+            {
+                Console.WriteLine("TEST TO EDIT PHOTO WITHOUT ATTACHING FILE: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST TO EDIT PHOTO WITHOUT ATTACHING FILE: FAILED");
+
+            }
+            
+            
+
+            Thread.Sleep(10000);
             driver.Quit();
 
 

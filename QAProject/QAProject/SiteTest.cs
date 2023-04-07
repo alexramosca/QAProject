@@ -263,7 +263,7 @@ namespace QAProject
             IWebElement btnSend = WebsiteElement.btnSend(driver);
             btnSend.Click();
 
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
 
             try
             {
@@ -286,7 +286,51 @@ namespace QAProject
         }
 
 
+        public static bool PHOTO01(IWebDriver driver)
+        {
+            IWebElement txtUsername = WebsiteElement.txtScreenName(driver);
+            IWebElement txtPassword = WebsiteElement.txtPassword(driver);
+            txtUsername.SendKeys("nick");
+            txtPassword.SendKeys("asdf");
+            IWebElement btnLogin = WebsiteElement.btnLogin(driver);
+            btnLogin.Click();
+            driver.SwitchTo().Alert().Accept();
 
+
+            IWebElement btnProfilePictureTrump = WebsiteElement.profilePictureTrump(driver);
+            btnProfilePictureTrump.Click();
+
+            IWebElement btnProfilePicture = WebsiteElement.profilePicture(driver);
+            btnProfilePicture.Click();
+
+            IWebElement btnSubmitPhoto = WebsiteElement.submitPhoto(driver);
+            btnSubmitPhoto.Click();
+
+            try
+            {
+                if (driver.SwitchTo().Alert().Text.Contains("Error you must select a file"))
+                {
+                    return true;
+                }
+
+                else
+                {
+                    return false;
+                }
+            }
+            catch (NoAlertPresentException)
+            {
+                return false; // Didn't sent a confirmation of not sending
+            }
+
+
+            Thread.Sleep(5000);
+
+            return true;
+
+            
+
+        }
 
 
     }
