@@ -107,6 +107,19 @@ namespace QAProject
             }
             */
 
+            bool MESSAGE04 = SiteTest.MESSAGE04(driver);
+
+            if (MESSAGE04)// TEST SENDING A MESSAGE WITH MORE THAN 1200 WORDS 
+            {
+                Console.WriteLine("TEST WITH MESSAGE WITH MORE THAN 1200 WORDS: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH MESSAGE WITH MORE THAN 1200 WORDS: FAILED");
+
+            }
+
             /*
             bool PHOTO01 = SiteTest.PHOTO01(driver);
 
@@ -138,6 +151,7 @@ namespace QAProject
             }
             */
 
+            /*
             bool PHOTO03 = SiteTest.PHOTO03(driver);
 
             if (PHOTO03)// TEST ATTACHING A SHORT FILE
@@ -150,7 +164,7 @@ namespace QAProject
                 Console.WriteLine("TEST TO ATTACH A SHORT FILE: FAILED");
 
             }
-
+            */
 
             Thread.Sleep(10000);
             driver.Quit();

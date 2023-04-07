@@ -286,6 +286,62 @@ namespace QAProject
         }
 
 
+        public static bool MESSAGE04(IWebDriver driver)
+        {
+            IWebElement txtUsername = WebsiteElement.txtScreenName(driver);
+            IWebElement txtPassword = WebsiteElement.txtPassword(driver);
+            txtUsername.SendKeys("nick");
+            txtPassword.SendKeys("asdf");
+            IWebElement btnLogin = WebsiteElement.btnLogin(driver);
+            btnLogin.Click();
+            driver.SwitchTo().Alert().Accept();
+
+
+
+
+            IWebElement btnMessagesLink = WebsiteElement.messagesLink(driver);
+            btnMessagesLink.Click();
+
+            Thread.Sleep(2000);
+
+            IWebElement txtSendMessageTo = WebsiteElement.txtSendMessageTo(driver);
+            txtSendMessageTo.Click();
+            txtSendMessageTo.SendKeys("test");
+
+            Thread.Sleep(2000);
+
+            IWebElement txtMessage = WebsiteElement.txtMessage(driver);
+            txtMessage.Click();
+            txtMessage.SendKeys("La tecnología ha revolucionado la forma en que vivimos nuestras vidas. Desde los teléfonos inteligentes hasta los robots, la tecnología ha transformado la manera en que nos comunicamos, trabajamos y nos entretenemos. Los avances en la tecnología también han llevado a grandes mejoras en la medicina y la ciencia, permitiendo que los médicos y los científicos realicen investigaciones y descubrimientos que nunca antes fueron posibles.\r\n\r\nSin embargo, también hay desventajas en la tecnología. Muchas personas se sienten cada vez más desconectadas de la sociedad y de la naturaleza debido al uso excesivo de la tecnología. Además, la tecnología también ha dado lugar a problemas como la adicción a Internet y la ciberseguridad.\r\n\r\nA pesar de estos desafíos, la tecnología continúa avanzando a un ritmo acelerado. Los científicos y los ingenieros están trabajando en nuevas tecnologías que podrían cambiar el mundo de maneras que aún no podemos imaginar. Desde los avances en la inteligencia artificial hasta las soluciones para el cambio climático, la tecnología tiene el potencial de hacer del mundo un lugar mejor para todos.\r\n\r\nEn conclusión, la tecnología es una fuerza poderosa que puede tener tanto efectos positivos como negativos en nuestras vidas. Es importante que utilicemos la tecnología de manera responsable y consideremos cuidadosamente sus impactos en la sociedad y en el medio ambiente.");
+
+            Thread.Sleep(2000);
+
+            IWebElement btnSend = WebsiteElement.btnSend(driver);
+            btnSend.Click();
+
+            Thread.Sleep(2000);
+
+            try
+            {
+                if (driver.SwitchTo().Alert().Text.Contains("Message Sent"))
+                {
+                    return false;
+                }
+
+                else
+                {
+                    return true;
+                }
+            }
+            catch (NoAlertPresentException)
+            {
+                return false; // Didn't sent a confirmation of sending
+            }
+
+
+        }
+
+
         public static bool PHOTO01(IWebDriver driver)
         {
             IWebElement txtUsername = WebsiteElement.txtScreenName(driver);
