@@ -209,7 +209,6 @@ namespace QAProject
 
             Thread.Sleep(5000);
 
-
             try
             {
                 if (driver.SwitchTo().Alert().Text.Contains("Message Sent"))

@@ -81,13 +81,13 @@ namespace QAProject
             if (MESSAGE02)// TEST SENDING A VALID MESSAGE 
             {
                 Console.WriteLine("TEST WITH VALID MESSAGE: PASSED");
+
             }
             else
             {
                 Console.WriteLine("TEST WITH VALID MESSAGE: FAILED");
+
             }
-
-
 
             Thread.Sleep(5000);
             driver.Quit();
