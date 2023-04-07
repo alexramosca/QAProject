@@ -50,15 +50,41 @@ namespace QAProject
             }
             */
 
+            /*
             bool TWEET03 = SiteTest.TWEET03(driver);
 
-            if (TWEET03)// TEST SENDING TWEET WITH SPECIAL CHARACTERS
+            if (TWEET03)// TEST SENDING TWEET WITH MORE THAN 60O CHARACTERS
             {
                 Console.WriteLine("TEST WITH A LIMIT OF 600 CHARACTERES: PASSED");
             }
             else
             {
                 Console.WriteLine("TEST WITH A LIMIT OF 600 CHARACTERES: FAILED");
+            }
+            */
+
+            /*
+            bool MESSAGE01 = SiteTest.MESSAGE01(driver);
+
+            if (MESSAGE01)// TEST SENDING AN EMPTY MESSAGE 
+            {
+                Console.WriteLine("TEST WITH EMPTY MESSAGE: PASSED");
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH EMPTY MESSAGE: FAILED");
+            }
+            */
+
+            bool MESSAGE02 = SiteTest.MESSAGE02(driver);
+
+            if (MESSAGE02)// TEST SENDING A VALID MESSAGE 
+            {
+                Console.WriteLine("TEST WITH VALID MESSAGE: PASSED");
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH VALID MESSAGE: FAILED");
             }
 
 

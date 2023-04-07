@@ -117,10 +117,118 @@ namespace QAProject
 
         }
 
+        public static bool MESSAGE01(IWebDriver driver)
+        {
+            IWebElement txtUsername = WebsiteElement.txtScreenName(driver);
+            IWebElement txtPassword = WebsiteElement.txtPassword(driver);
+            txtUsername.SendKeys("nick");
+            txtPassword.SendKeys("asdf");
+            IWebElement btnLogin = WebsiteElement.btnLogin(driver);
+            btnLogin.Click();
+            driver.SwitchTo().Alert().Accept();
+
+            
+            
+            
+            IWebElement btnMessagesLink = WebsiteElement.messagesLink(driver);
+            btnMessagesLink.Click();
+
+            Thread.Sleep(5000);
+
+            IWebElement txtSendMessageTo = WebsiteElement.txtSendMessageTo(driver);
+            txtSendMessageTo.Click();
+            txtSendMessageTo.SendKeys("test");
+
+            Thread.Sleep(5000);
+
+            IWebElement txtMessage = WebsiteElement.txtMessage(driver);
+            txtMessage.Click();
+            txtMessage.SendKeys("");
+
+            Thread.Sleep(5000);
+
+            IWebElement btnSend = WebsiteElement.btnSend(driver);
+            btnSend.Click();
+
+            Thread.Sleep(5000);
+
+
+            try
+            {
+                if (driver.SwitchTo().Alert().Text.Contains("Message Sent"))
+                {
+                    return false;
+                }
+
+                else 
+                {
+                    return true;
+                }
+            }
+            catch (NoAlertPresentException)
+            {
+                return true; // Didn't sent a confirmation of sending
+            }
+
+
+        }
+
+
+        public static bool MESSAGE02(IWebDriver driver)
+        {
+            IWebElement txtUsername = WebsiteElement.txtScreenName(driver);
+            IWebElement txtPassword = WebsiteElement.txtPassword(driver);
+            txtUsername.SendKeys("nick");
+            txtPassword.SendKeys("asdf");
+            IWebElement btnLogin = WebsiteElement.btnLogin(driver);
+            btnLogin.Click();
+            driver.SwitchTo().Alert().Accept();
 
 
 
 
+            IWebElement btnMessagesLink = WebsiteElement.messagesLink(driver);
+            btnMessagesLink.Click();
+
+            Thread.Sleep(5000);
+
+            IWebElement txtSendMessageTo = WebsiteElement.txtSendMessageTo(driver);
+            txtSendMessageTo.Click();
+            txtSendMessageTo.SendKeys("test");
+
+            Thread.Sleep(5000);
+
+            IWebElement txtMessage = WebsiteElement.txtMessage(driver);
+            txtMessage.Click();
+            txtMessage.SendKeys("This is a valid message");
+
+            Thread.Sleep(5000);
+
+            IWebElement btnSend = WebsiteElement.btnSend(driver);
+            btnSend.Click();
+
+            Thread.Sleep(5000);
+
+
+            try
+            {
+                if (driver.SwitchTo().Alert().Text.Contains("Message Sent"))
+                {
+                    return true;
+                }
+
+                else
+                {
+                    return false;
+                }
+            }
+            catch (NoAlertPresentException)
+            {
+                return false; // Didn't sent a confirmation of sending
+            }
+
+
+        }
 
 
 
