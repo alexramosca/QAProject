@@ -24,7 +24,16 @@ namespace QAProject
 
             driver.Url = "http://10.157.123.12/site3/Login.php"; //opening and closing just to make sure it works
 
-
+            bool TWEET01 = SiteTest.TWEET01(driver);
+                        
+            if (TWEET01)// TEST SENDING EMPTY TWEET
+            {
+                Console.WriteLine("EMPTY TWEET TEST: PASSED");
+            }
+            else
+            {
+                Console.WriteLine("EMPTY TWEET TEST: FAILED");
+            }
 
 
             Thread.Sleep(5000);

@@ -194,9 +194,15 @@ namespace QAProject
             return element;
         }
 
-        //Messages Page
+        public static IWebElement firstTweet(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("body > div > div.row > div.col-sm-6 > div:nth-child(2) > div:nth-child(1)"));
+            return element;
+        }
 
-        public static IWebElement txtSendMessageTo(IWebDriver driver)
+            //Messages Page
+
+            public static IWebElement txtSendMessageTo(IWebDriver driver)
         {
             IWebElement element = driver.FindElement(By.Id("to"));
             return element;
