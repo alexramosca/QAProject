@@ -122,6 +122,8 @@ namespace QAProject
             }
             */
 
+
+            /*
             bool PHOTO02 = SiteTest.PHOTO02(driver);
 
             if (PHOTO02)// TEST ATTACHING A LARGER FILE
@@ -134,7 +136,20 @@ namespace QAProject
                 Console.WriteLine("TEST TO ATTACH A LARGER FILE: FAILED");
 
             }
+            */
 
+            bool PHOTO03 = SiteTest.PHOTO03(driver);
+
+            if (PHOTO03)// TEST ATTACHING A SHORT FILE
+            {
+                Console.WriteLine("TEST TO ATTACH A SHORT FILE: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST TO ATTACH A SHORT FILE: FAILED");
+
+            }
 
 
             Thread.Sleep(10000);
