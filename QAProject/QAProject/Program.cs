@@ -37,6 +37,7 @@ namespace QAProject
             }
             */
 
+            /*
             bool TWEET02 = SiteTest.TWEET02(driver);
 
             if (TWEET02)// TEST SENDING TWEET WITH SPECIAL CHARACTERS
@@ -47,6 +48,19 @@ namespace QAProject
             {
                 Console.WriteLine("TEST WITH SPECIAL CHARACTERS: FAILED");
             }
+            */
+
+            bool TWEET03 = SiteTest.TWEET03(driver);
+
+            if (TWEET03)// TEST SENDING TWEET WITH SPECIAL CHARACTERS
+            {
+                Console.WriteLine("TEST WITH A LIMIT OF 600 CHARACTERES: PASSED");
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH A LIMIT OF 600 CHARACTERES: FAILED");
+            }
+
 
 
             Thread.Sleep(5000);
