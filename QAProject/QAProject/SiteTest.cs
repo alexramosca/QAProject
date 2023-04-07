@@ -324,6 +324,8 @@ namespace QAProject
             }
 
 
+
+
             Thread.Sleep(5000);
 
             return true;
@@ -331,6 +333,66 @@ namespace QAProject
             
 
         }
+
+
+
+        public static bool PHOTO02(IWebDriver driver)
+        {
+            IWebElement txtUsername = WebsiteElement.txtScreenName(driver);
+            IWebElement txtPassword = WebsiteElement.txtPassword(driver);
+            txtUsername.SendKeys("nick");
+            txtPassword.SendKeys("asdf");
+            IWebElement btnLogin = WebsiteElement.btnLogin(driver);
+            btnLogin.Click();
+            driver.SwitchTo().Alert().Accept();
+
+
+            IWebElement btnProfilePictureTrump = WebsiteElement.profilePictureTrump(driver);
+            btnProfilePictureTrump.Click();
+
+            IWebElement btnProfilePicture = WebsiteElement.profilePicture(driver);
+            btnProfilePicture.Click();
+            Thread.Sleep(3000);
+
+            IWebElement btnChooseFile = WebsiteElement.chooseFile(driver);
+            btnChooseFile.SendKeys("C:\\repos\\QAProject\\large.jpg"); // uploading a large file 
+            Thread.Sleep(3000);
+
+            IWebElement btnSubmitPhoto = WebsiteElement.submitPhoto(driver);
+            btnSubmitPhoto.Click();
+
+
+            try
+            {
+                if (driver.SwitchTo().Alert().Text.Contains("Your photo have uploaded successfully"))
+                {
+                    return false;
+                }
+
+                else
+                {
+                    return true;
+                }
+            }
+            catch (NoAlertPresentException)
+            {
+                return false; // Didn't sent a confirmation of uploading
+            }
+
+
+            Thread.Sleep(5000);
+
+            return true;
+
+
+        }
+
+
+
+
+
+
+
 
 
     }

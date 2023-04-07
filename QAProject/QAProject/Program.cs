@@ -77,20 +77,20 @@ namespace QAProject
             */
 
 
-           /*
-            bool MESSAGE02 = SiteTest.MESSAGE02(driver);
+            /*
+             bool MESSAGE02 = SiteTest.MESSAGE02(driver);
 
-            if (MESSAGE02)// TEST SENDING A VALID MESSAGE 
-            {
-                Console.WriteLine("TEST WITH VALID MESSAGE: PASSED");
+             if (MESSAGE02)// TEST SENDING A VALID MESSAGE 
+             {
+                 Console.WriteLine("TEST WITH VALID MESSAGE: PASSED");
 
-            }
-            else
-            {
-                Console.WriteLine("TEST WITH VALID MESSAGE: FAILED");
+             }
+             else
+             {
+                 Console.WriteLine("TEST WITH VALID MESSAGE: FAILED");
 
-            }
-           */
+             }
+            */
 
             /*
             bool MESSAGE03 = SiteTest.MESSAGE03(driver);
@@ -107,10 +107,10 @@ namespace QAProject
             }
             */
 
-            
+            /*
             bool PHOTO01 = SiteTest.PHOTO01(driver);
 
-            if (PHOTO01)// TEST SENDING A VALID MESSAGE 
+            if (PHOTO01)// TEST UPLOADING WITHOUT ATTACHING FILE 
             {
                 Console.WriteLine("TEST TO EDIT PHOTO WITHOUT ATTACHING FILE: PASSED");
 
@@ -120,8 +120,22 @@ namespace QAProject
                 Console.WriteLine("TEST TO EDIT PHOTO WITHOUT ATTACHING FILE: FAILED");
 
             }
-            
-            
+            */
+
+            bool PHOTO02 = SiteTest.PHOTO02(driver);
+
+            if (PHOTO02)// TEST ATTACHING A LARGER FILE
+            {
+                Console.WriteLine("TEST TO ATTACH A LARGER FILE: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST TO ATTACH A LARGER FILE: FAILED");
+
+            }
+
+
 
             Thread.Sleep(10000);
             driver.Quit();

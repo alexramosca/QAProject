@@ -257,6 +257,13 @@ namespace QAProject
             return element;
         }
 
+        public static IWebElement chooseFile(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#frm_photo > input.btn.btn-primary.btn-block.btn-lg"));
+            return element;
+        }
+
+
 
 
 
