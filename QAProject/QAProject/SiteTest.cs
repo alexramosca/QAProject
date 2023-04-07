@@ -60,22 +60,24 @@ namespace QAProject
 
             IWebElement txtTweet = WebsiteElement.txtTweet(driver);
             txtTweet.Click();
-            txtTweet.SendKeys("h2");
+            txtTweet.SendKeys("#!-");
 
 
             IWebElement txtBtnSendTweet = WebsiteElement.btnSendTweet(driver);
             txtBtnSendTweet.Click();
             txtBtnSendTweet.Click();
+            driver.SwitchTo().Alert().Accept();
 
+            IWebElement txtFirstTweet = WebsiteElement.firstTweet(driver);
 
-            try
+            if (txtFirstTweet.Text.Contains("#!-"))
             {
-                driver.SwitchTo().Alert().Accept();
-                return false; // Alert was present to post tweet
+                return true;
             }
-            catch (NoAlertPresentException)
+
+            else 
             {
-                return true; // Alert was not present so didn't post tweet
+                return false;
             }
 
         }

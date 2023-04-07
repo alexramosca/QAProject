@@ -24,6 +24,7 @@ namespace QAProject
 
             driver.Url = "http://10.157.123.12/site3/Login.php"; //opening and closing just to make sure it works
 
+            /*
             bool TWEET01 = SiteTest.TWEET01(driver);
                         
             if (TWEET01)// TEST SENDING EMPTY TWEET
@@ -33,6 +34,18 @@ namespace QAProject
             else
             {
                 Console.WriteLine("EMPTY TWEET TEST: FAILED");
+            }
+            */
+
+            bool TWEET02 = SiteTest.TWEET02(driver);
+
+            if (TWEET02)// TEST SENDING TWEET WITH SPECIAL CHARACTERS
+            {
+                Console.WriteLine("TEST WITH SPECICAL CHARACTERS: PASSED");
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH SPECIAL CHARACTERS: FAILED");
             }
 
 
