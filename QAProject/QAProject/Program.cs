@@ -76,6 +76,8 @@ namespace QAProject
             }
             */
 
+
+           /*
             bool MESSAGE02 = SiteTest.MESSAGE02(driver);
 
             if (MESSAGE02)// TEST SENDING A VALID MESSAGE 
@@ -88,6 +90,21 @@ namespace QAProject
                 Console.WriteLine("TEST WITH VALID MESSAGE: FAILED");
 
             }
+           */
+
+            bool MESSAGE03 = SiteTest.MESSAGE03(driver);
+
+            if (MESSAGE03)// TEST SENDING A VALID MESSAGE 
+            {
+                Console.WriteLine("TEST TO CURRENT LOGGED IN USER: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST TO CURRENT LOGGED IN USER: FAILED");
+
+            }
+
 
             Thread.Sleep(5000);
             driver.Quit();
