@@ -81,9 +81,85 @@ namespace QAProject
             }
 
             Thread.Sleep(10000);
-            driver.Quit();
+            
 
             //RICO'S TESTS END
+
+            //ALEX'S TESTS START
+            //TEST MENU01 -  MENU LINK
+          
+            if (SiteTest.TestMenu01(driver))
+            {
+                Console.WriteLine("MENU01 - Page Redirect to Index page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("MENU01 - Page Redirect to Index page - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+
+            //TEST MENU02 -  MOMENTS LINK
+
+            if (SiteTest.TestMenu02(driver))
+            {
+                Console.WriteLine("MENU02 - Page Redirect to Moments page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("MENU02 - Page Redirect to Moments page - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+
+
+            //TEST MENU03 - NOTIFICATIONS LINK
+            if (SiteTest.TestMenu03(driver))
+            {
+                Console.WriteLine("MENU03 - Page Redirect to Notifications page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("MENU03 - Page Redirect to Notifications page - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+
+            //TEST MENU04 - MESSAGES LINK
+            if (SiteTest.TestMenu04(driver))
+            {
+                Console.WriteLine("MENU04 - Page Redirect to Messages page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("MENU04 - Page Redirect to Messages page - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+
+            //TEST MENU05 - CONTACT US LINK
+            if (SiteTest.TestMenu05(driver))
+            {
+                Console.WriteLine("MENU05 - Page Redirect to Contact us page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("MENU05 - Page Redirect to Contact us page - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+
+
+
+
+
+
+
+            driver.Quit();
+
+
+
+            //ALEX'S TESTS END
 
         }
 

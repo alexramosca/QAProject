@@ -140,6 +140,11 @@ namespace QAProject
             IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > ul > li:nth-child(2) > a"));
             return element;
         }
+        public static IWebElement NotificationsLink(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > ul > li:nth-child(3) > a"));
+            return element;
+        }
         public static IWebElement messagesLink(IWebDriver driver)
         {
             IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > ul > li:nth-child(4) > a"));
