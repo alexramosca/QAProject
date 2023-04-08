@@ -175,7 +175,57 @@ namespace QAProject
                 return false;
             }
 
+
+
         }
+        //MENU06 - TEST LOGOUT
+        public static bool TestMenu06(IWebDriver driver)
+        {
+            try
+            {
+                Login(driver, "nick", "asdf");
+              
+                IWebElement btnLi = WebsiteElement.btnProfile(driver);
+                IWebElement btnLogOut = WebsiteElement.btnLogOut(driver);
+                
+               
+                btnLi.Click();
+                btnLogOut.Click();
+                
+
+                if (driver.Url.Contains("http://10.157.123.12/site3/Login.php"))
+                    return true;
+                else return false;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+        //MENU07 - TEST EDIT PROFILE PICTRE
+        public static bool TestMenu07(IWebDriver driver)
+        {
+            try
+            {
+                Login(driver, "nick", "asdf");
+                IWebElement btnLi = WebsiteElement.btnProfile(driver);
+                IWebElement btnEdit = WebsiteElement.btnEditProfile(driver);
+                btnLi.Click();
+                btnEdit.Click();
+
+
+                if (driver.Url.Contains("http://10.157.123.12/site3/edit_photo.php"))
+                    return true;
+                else return false;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
 
     }
 

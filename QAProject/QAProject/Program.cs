@@ -18,14 +18,14 @@ namespace QAProject
 
             //reset the website
            // SiteReset();
-
+           
             //driver used on the project
             IWebDriver driver = new ChromeDriver(@"c:\Selenium"); //Careful with the path of your driver.
 
             driver.Url = "http://10.157.123.12/site3/Login.php"; //opening and closing just to make sure it works
 
             //RICO'S TESTS START
-
+            
             driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
 
             //LOG01 - Test Login with Invalid Information
@@ -137,6 +137,30 @@ namespace QAProject
 
             Thread.Sleep(5000);
 
+            //TEST MENU06 - LOGOUT LINK
+            if (SiteTest.TestMenu06(driver))
+            {
+                Console.WriteLine("MENU06 - Page Redirect to Login Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("MENU06 - Page Redirect to Login page - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+
+            //TEST MENU07 - LOGOUT LINK
+            if (SiteTest.TestMenu07(driver))
+            {
+                Console.WriteLine("MENU07 - Page Redirect to Edit Profile Picture Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("MENU07 - Page Redirect to Edit Profile Picture page - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+
             //TEST MENU05 - CONTACT US LINK
             if (SiteTest.TestMenu05(driver))
             {
@@ -149,7 +173,7 @@ namespace QAProject
 
             Thread.Sleep(5000);
 
-
+         
 
 
 
