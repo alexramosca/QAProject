@@ -251,6 +251,8 @@ namespace QAProject
             return element; 
         }
 
+
+
         public static IWebElement submitPhoto(IWebDriver driver)
         {
             IWebElement element = driver.FindElement(By.Id("button"));
@@ -264,7 +266,12 @@ namespace QAProject
         }
 
 
-
+        //LOGOUT 
+        public static IWebElement logOut(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > li > div > a:nth-child(1)"));
+            return element;
+        }
 
 
     }

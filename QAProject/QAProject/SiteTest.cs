@@ -50,6 +50,7 @@ namespace QAProject
 
         public static bool TWEET02(IWebDriver driver)
         {
+            
             IWebElement txtUsername = WebsiteElement.txtScreenName(driver);
             IWebElement txtPassword = WebsiteElement.txtPassword(driver);
             txtUsername.SendKeys("nick");
@@ -57,7 +58,7 @@ namespace QAProject
             IWebElement btnLogin = WebsiteElement.btnLogin(driver);
             btnLogin.Click();
             driver.SwitchTo().Alert().Accept();
-
+            
             IWebElement txtTweet = WebsiteElement.txtTweet(driver);
             txtTweet.Click();
             txtTweet.SendKeys("#!-");
@@ -85,6 +86,7 @@ namespace QAProject
 
         public static bool TWEET03(IWebDriver driver)
         {
+            
             IWebElement txtUsername = WebsiteElement.txtScreenName(driver);
             IWebElement txtPassword = WebsiteElement.txtPassword(driver);
             txtUsername.SendKeys("nick");
@@ -92,11 +94,13 @@ namespace QAProject
             IWebElement btnLogin = WebsiteElement.btnLogin(driver);
             btnLogin.Click();
             driver.SwitchTo().Alert().Accept();
+            
+
 
             IWebElement txtTweet = WebsiteElement.txtTweet(driver);
             txtTweet.Click();
             txtTweet.SendKeys("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-
+            
 
             IWebElement txtBtnSendTweet = WebsiteElement.btnSendTweet(driver);
             txtBtnSendTweet.Click();
@@ -213,6 +217,7 @@ namespace QAProject
             {
                 if (driver.SwitchTo().Alert().Text.Contains("Message Sent"))
                 {
+                    driver.SwitchTo().Alert().Accept();
                     return true;
                 }
 
@@ -263,12 +268,13 @@ namespace QAProject
             IWebElement btnSend = WebsiteElement.btnSend(driver);
             btnSend.Click();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
 
             try
             {
                 if (driver.SwitchTo().Alert().Text.Contains("Message Not Sent"))
                 {
+                    driver.SwitchTo().Alert().Accept();
                     return true;
                 }
 
@@ -330,6 +336,7 @@ namespace QAProject
 
                 else
                 {
+                    driver.SwitchTo().Alert().Accept();
                     return true;
                 }
             }
@@ -366,6 +373,7 @@ namespace QAProject
             {
                 if (driver.SwitchTo().Alert().Text.Contains("Error you must select a file"))
                 {
+                    driver.SwitchTo().Alert().Accept();
                     return true;
                 }
 
@@ -379,14 +387,6 @@ namespace QAProject
                 return false; // Didn't sent a confirmation of not sending
             }
 
-
-
-
-            Thread.Sleep(5000);
-
-            return true;
-
-            
 
         }
 
@@ -420,13 +420,15 @@ namespace QAProject
 
             try
             {
-                if (driver.SwitchTo().Alert().Text.Contains("Your photo have updated successfully"))
+                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
                 {
+                    
                     return false;
                 }
 
                 else
                 {
+                    driver.SwitchTo().Alert().Accept();
                     return true;
                 }
             }
@@ -434,12 +436,6 @@ namespace QAProject
             {
                 return false; // Didn't sent a confirmation of uploading
             }
-
-
-            Thread.Sleep(5000);
-
-            return true;
-
 
         }
 
@@ -475,7 +471,7 @@ namespace QAProject
 
             try
             {
-                if (driver.SwitchTo().Alert().Text.Contains("Your photo have updated successfully"))
+                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
                 {
                     return true;
                 }
@@ -490,10 +486,6 @@ namespace QAProject
                 return false; // Didn't sent a confirmation of uploading
             }
 
-
-            Thread.Sleep(5000);
-
-            //return true;
 
         }
 
