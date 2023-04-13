@@ -23,9 +23,165 @@ namespace QAProject
             IWebDriver driver = new ChromeDriver(@"c:\Selenium"); //Careful with the path of your driver.
 
             driver.Url = "http://10.157.123.12/site3/Login.php"; //opening and closing just to make sure it works
+            //ANTONIO'S TESTS
+
+            bool TWEET01 = SiteTest.TWEET01(driver);
+
+            if (TWEET01)// TEST SENDING EMPTY TWEET
+            {
+                Console.WriteLine("EMPTY TWEET TEST: PASSED");
+            }
+            else
+            {
+                Console.WriteLine("EMPTY TWEET TEST: FAILED");
+            }
+
+            LogOut(driver);
+
+            bool TWEET02 = SiteTest.TWEET02(driver);
+
+            if (TWEET02)// TEST SENDING TWEET WITH SPECIAL CHARACTERS
+            {
+                Console.WriteLine("TEST WITH SPECICAL CHARACTERS: PASSED");
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH SPECIAL CHARACTERS: FAILED");
+            }
+
+            LogOut(driver);
+
+
+
+            bool TWEET03 = SiteTest.TWEET03(driver);
+
+            if (TWEET03)// TEST SENDING TWEET WITH MORE THAN 60O CHARACTERS
+            {
+                Console.WriteLine("TEST WITH A LIMIT OF 600 CHARACTERES: PASSED");
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH A LIMIT OF 600 CHARACTERES: FAILED");
+            }
+
+            LogOut(driver);
+
+            /* RUN IT INDIVIDUALLY
+            bool MESSAGE01 = SiteTest.MESSAGE01(driver);
+
+            if (MESSAGE01)// TEST SENDING AN EMPTY MESSAGE 
+            {
+                Console.WriteLine("TEST WITH EMPTY MESSAGE: PASSED");
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH EMPTY MESSAGE: FAILED");
+            }
+            */
+
+
+            //LogOut(driver);
+
+
+            bool MESSAGE02 = SiteTest.MESSAGE02(driver);
+
+            if (MESSAGE02)// TEST SENDING A VALID MESSAGE 
+            {
+                Console.WriteLine("TEST WITH VALID MESSAGE: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH VALID MESSAGE: FAILED");
+
+            }
+
+            LogOut(driver);
+
+
+            bool MESSAGE03 = SiteTest.MESSAGE03(driver);
+
+            if (MESSAGE03)// TEST SENDING A VALID MESSAGE 
+            {
+                Console.WriteLine("TEST TO CURRENT LOGGED IN USER: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST TO CURRENT LOGGED IN USER: FAILED");
+
+            }
+
+
+            LogOut(driver);
+
+            bool MESSAGE04 = SiteTest.MESSAGE04(driver);
+
+            if (MESSAGE04)// TEST SENDING A MESSAGE WITH MORE THAN 1200 WORDS 
+            {
+                Console.WriteLine("TEST WITH MESSAGE WITH MORE THAN 1200 WORDS: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST WITH MESSAGE WITH MORE THAN 1200 WORDS: FAILED");
+
+            }
+
+
+            LogOut(driver);
+
+            bool PHOTO01 = SiteTest.PHOTO01(driver);
+
+            if (PHOTO01)// TEST UPLOADING WITHOUT ATTACHING FILE 
+            {
+                Console.WriteLine("TEST TO EDIT PHOTO WITHOUT ATTACHING FILE: PASSED");
+
+
+            }
+            else
+            {
+                Console.WriteLine("TEST TO EDIT PHOTO WITHOUT ATTACHING FILE: FAILED");
+
+            }
+
+            LogOutWithHome(driver);
+
+
+            bool PHOTO02 = SiteTest.PHOTO02(driver);
+
+            if (PHOTO02)// TEST ATTACHING A LARGER FILE
+            {
+                Console.WriteLine("TEST TO ATTACH A LARGER FILE: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST TO ATTACH A LARGER FILE: FAILED");
+
+            }
+
+            LogOutWithHome(driver);
+
+
+            bool PHOTO03 = SiteTest.PHOTO03(driver);
+
+            if (PHOTO03)// TEST ATTACHING A SHORT FILE
+            {
+                Console.WriteLine("TEST TO ATTACH A SHORT FILE: PASSED");
+
+            }
+            else
+            {
+                Console.WriteLine("TEST TO ATTACH A SHORT FILE: FAILED");
+
+            }
+
+
+            Thread.Sleep(10000);
 
             //RICO'S TESTS START
-            
+
             driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
 
             //LOG01 - Test Login with Invalid Information
@@ -81,13 +237,13 @@ namespace QAProject
             }
 
             Thread.Sleep(10000);
-            
+
 
             //RICO'S TESTS END
 
             //ALEX'S TESTS START
             //TEST MENU01 -  MENU LINK
-          
+
             if (SiteTest.TestMenu01(driver))
             {
                 Console.WriteLine("MENU01 - Page Redirect to Index page - TEST PASS");
@@ -173,7 +329,7 @@ namespace QAProject
 
             Thread.Sleep(5000);
 
-         
+
 
 
 
@@ -185,8 +341,36 @@ namespace QAProject
 
             //ALEX'S TESTS END
 
+
+
+            Thread.Sleep(5000);
+            driver.Quit();
+
+
+            IWebElement btnLogOut = WebsiteElement.logOut(driver);
+            btnLogOut.Click();
         }
 
+        public static void LogOutWithHome(IWebDriver driver)
+        {
+            IWebElement btnHome = WebsiteElement.homeLink(driver);
+            btnHome.Click();
+
+            IWebElement btnProfilePictureTrump = WebsiteElement.profilePictureTrump(driver);
+            btnProfilePictureTrump.Click();
+
+            IWebElement btnLogOut = WebsiteElement.logOut(driver);
+            btnLogOut.Click();
+        }
+
+        public static void LogOut(IWebDriver driver)
+        {
+            IWebElement btnProfilePictureTrump = WebsiteElement.profilePictureTrump(driver);
+            btnProfilePictureTrump.Click();
+
+            IWebElement btnLogOut = WebsiteElement.logOut(driver);
+            btnLogOut.Click();
+        }
         public static void SiteReset()
         {
             string myConnectionString = "server=10.157.123.12;database=bitter-site4;uid=site3;pwd=KgpRPAIfliuGXxM8;";
