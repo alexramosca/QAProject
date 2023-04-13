@@ -23,6 +23,71 @@ namespace QAProject
             IWebDriver driver = new ChromeDriver(@"c:\Selenium"); //Careful with the path of your driver.
 
             driver.Url = "http://10.157.123.12/site3/Login.php"; //opening and closing just to make sure it works
+
+            //RICO'S TESTS START
+
+            // driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
+
+            //LOG01 - Test Login with Invalid Information
+
+            if (SiteTest.Login(driver, "adsdsaadsdsa", "qweweqweqwqe"))
+            {
+                Console.WriteLine("LOG01 - Login successful - TEST FAIL");
+            }
+            else
+            {
+                Console.WriteLine("LOG01 - Login unsuccessful - TEST PASS");
+            }
+
+            Thread.Sleep(5000);
+
+            //LOG02 - Test Login with Valid Information
+
+            if (SiteTest.Login(driver, "nick", "asdf"))
+            {
+                Console.WriteLine("LOG02 - Login successful - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("LOG02 - Login unsuccessful - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+
+            //SEARCH01 - Test Search Bar
+
+            if (SiteTest.TestSearchBar(driver))
+            {
+                Console.WriteLine("SEARCH01 - Page Redirected to Results - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("SEARCH01 - Page Didn't Redirect to Results - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+
+            //HOME01 - Test Link to Profile
+
+            driver.Navigate().Back();
+
+            if (SiteTest.TestProfileLink(driver))
+            {
+                Console.WriteLine("HOME01 - Page Redirected to Profile - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("HOME01 - Page Didn't Redirect to Profile - TEST FAIL");
+            }
+
+            Thread.Sleep(5000);
+            LogOut(driver);
+
+
+            //RICO'S TESTS END
+
+
+
             //ANTONIO'S TESTS
 
             bool TWEET01 = SiteTest.TWEET01(driver);
@@ -180,66 +245,7 @@ namespace QAProject
 
             Thread.Sleep(10000);
 
-            //RICO'S TESTS START
-
-           // driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
-
-            //LOG01 - Test Login with Invalid Information
-
-            if (SiteTest.Login(driver, "adsdsaadsdsa", "qweweqweqwqe"))
-            {
-                Console.WriteLine("LOG01 - Login successful - TEST FAIL");
-            }
-            else
-            {
-                Console.WriteLine("LOG01 - Login unsuccessful - TEST PASS");
-            }
-
-            Thread.Sleep(5000);
-
-            //LOG02 - Test Login with Valid Information
-
-            if (SiteTest.Login(driver, "nick", "asdf"))
-            {
-                Console.WriteLine("LOG02 - Login successful - TEST PASS");
-            }
-            else
-            {
-                Console.WriteLine("LOG02 - Login unsuccessful - TEST FAIL");
-            }
-
-            Thread.Sleep(5000);
-
-            //SEARCH01 - Test Search Bar
-
-            if (SiteTest.TestSearchBar(driver))
-            {
-                Console.WriteLine("SEARCH01 - Page Redirected to Results - TEST PASS");
-            }
-            else
-            {
-                Console.WriteLine("SEARCH01 - Page Didn't Redirect to Results - TEST FAIL");
-            }
-
-            Thread.Sleep(5000);
-
-            //HOME01 - Test Link to Profile
-
-            driver.Navigate().Back();
-
-            if (SiteTest.TestProfileLink(driver))
-            {
-                Console.WriteLine("HOME01 - Page Redirected to Profile - TEST PASS");
-            }
-            else
-            {
-                Console.WriteLine("HOME01 - Page Didn't Redirect to Profile - TEST FAIL");
-            }
-
-            Thread.Sleep(10000);
-
-
-            //RICO'S TESTS END
+            
 
             //ALEX'S TESTS START
             //TEST MENU01 -  MENU LINK
