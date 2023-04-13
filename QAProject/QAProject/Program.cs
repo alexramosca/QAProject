@@ -182,7 +182,7 @@ namespace QAProject
 
             //RICO'S TESTS START
 
-            driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
+           // driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
 
             //LOG01 - Test Login with Invalid Information
 
@@ -347,8 +347,8 @@ namespace QAProject
             driver.Quit();
 
 
-            IWebElement btnLogOut = WebsiteElement.logOut(driver);
-            btnLogOut.Click();
+           /* IWebElement btnLogOut = WebsiteElement.logOut(driver);
+            btnLogOut.Click();*/
         }
 
         public static void LogOutWithHome(IWebDriver driver)
