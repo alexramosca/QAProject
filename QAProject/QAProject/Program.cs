@@ -17,15 +17,15 @@ namespace QAProject
             //Add the call for the tests on SiteTests class
 
             //reset the website
-           // SiteReset();
-           
+            // SiteReset();
+
             //driver used on the project
             IWebDriver driver = new ChromeDriver(@"c:\Selenium"); //Careful with the path of your driver.
 
             driver.Url = "http://10.157.123.12/site3/Login.php"; //opening and closing just to make sure it works
 
             //RICO'S TESTS START
-            
+
             driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
 
             //LOG01 - Test Login with Invalid Information
@@ -81,13 +81,13 @@ namespace QAProject
             }
 
             Thread.Sleep(10000);
-            
+
 
             //RICO'S TESTS END
 
             //ALEX'S TESTS START
             //TEST MENU01 -  MENU LINK
-          
+
             if (SiteTest.TestMenu01(driver))
             {
                 Console.WriteLine("MENU01 - Page Redirect to Index page - TEST PASS");
@@ -173,7 +173,7 @@ namespace QAProject
 
             Thread.Sleep(5000);
 
-         
+
 
 
 
@@ -367,7 +367,6 @@ namespace QAProject
             IWebElement btnLogOut = WebsiteElement.logOut(driver);
             btnLogOut.Click();
         }
-    }
 
         public static void SiteReset()
         {
@@ -383,6 +382,7 @@ namespace QAProject
             connection.Close();
         }
 
+    }
 
     }
-}
+

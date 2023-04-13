@@ -227,7 +227,7 @@ namespace QAProject
         }
 
 
-    }
+   
 
     public static bool TWEET01(IWebDriver driver)
     {
@@ -705,9 +705,7 @@ namespace QAProject
 
     }
 
+    }
 
-
-
-}
 
 }
