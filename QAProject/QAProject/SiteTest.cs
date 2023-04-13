@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using MySql.Data.MySqlClient;
 using OpenQA.Selenium.Support.UI;
+using System.IO;
 
 
 namespace QAProject
@@ -413,7 +414,8 @@ namespace QAProject
             Thread.Sleep(3000);
 
             IWebElement btnChooseFile = WebsiteElement.chooseFile(driver);
-            btnChooseFile.SendKeys("C:\\repos\\QAProject\\large.jpg"); // uploading a large file 
+            string filePath = Path.Combine(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName).FullName, "large.jpg");
+            btnChooseFile.SendKeys(filePath);
             Thread.Sleep(3000);
 
             IWebElement btnSubmitPhoto = WebsiteElement.submitPhoto(driver);
@@ -464,7 +466,8 @@ namespace QAProject
             Thread.Sleep(3000);
 
             IWebElement btnChooseFile = WebsiteElement.chooseFile(driver);
-            btnChooseFile.SendKeys("C:\\repos\\QAProject\\short.png"); // uploading a large file 
+            string filePath = Path.Combine(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName).FullName, "large.jpg");
+            btnChooseFile.SendKeys(filePath);
             Thread.Sleep(5000);
 
             IWebElement btnSubmitPhoto = WebsiteElement.submitPhoto(driver);

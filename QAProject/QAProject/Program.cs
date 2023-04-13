@@ -26,7 +26,7 @@ namespace QAProject
 
             //RICO'S TESTS START
 
-            // driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
+             driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
 
             //LOG01 - Test Login with Invalid Information
 
