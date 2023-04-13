@@ -199,9 +199,15 @@ namespace QAProject
             return element;
         }
 
-        //Messages Page
+        public static IWebElement firstTweet(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("body > div > div.row > div.col-sm-6 > div:nth-child(2) > div:nth-child(1)"));
+            return element;
+        }
 
-        public static IWebElement txtSendMessageTo(IWebDriver driver)
+            //Messages Page
+
+            public static IWebElement txtSendMessageTo(IWebDriver driver)
         {
             IWebElement element = driver.FindElement(By.Id("to"));
             return element;
@@ -237,6 +243,41 @@ namespace QAProject
             IWebElement element = driver.FindElement(By.Id("button"));
             return element;
         }
+
+
+        public static IWebElement profilePictureTrump(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#dropdown01"));
+            return element;
+        }
+        public static IWebElement profilePicture(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > li > div > a:nth-child(2)"));
+            return element; 
+        }
+
+
+
+        public static IWebElement submitPhoto(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.Id("button"));
+            return element;
+        }
+
+        public static IWebElement chooseFile(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#frm_photo > input.btn.btn-primary.btn-block.btn-lg"));
+            return element;
+        }
+
+
+        //LOGOUT 
+        public static IWebElement logOut(IWebDriver driver)
+        {
+            IWebElement element = driver.FindElement(By.CssSelector("#navbarsExampleDefault > li > div > a:nth-child(1)"));
+            return element;
+        }
+
 
     }
 }
