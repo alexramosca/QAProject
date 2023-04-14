@@ -9,6 +9,8 @@ using OpenQA.Selenium.Chrome;
 using MySql.Data.MySqlClient;
 using OpenQA.Selenium.Support.UI;
 using System.IO;
+using Org.BouncyCastle.Crypto.Macs;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace QAProject
@@ -708,9 +710,10 @@ namespace QAProject
             }
 
         }
+        //Brett code starts
+        //REG01 - TEST REGISTRATION -Check if Passwords match
         public static bool TestReg01(IWebDriver driver)
         {
-
             try
             {
                 // Navigate to the form page
@@ -722,9 +725,9 @@ namespace QAProject
                 IWebElement txtLastName = WebsiteElement.txtLastName(driver);
                 txtLastName.SendKeys("April");
                 IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
-                txtScreenName.SendKeys("Test");
+                txtScreenName.SendKeys("Test1");
                 IWebElement txtEmail = WebsiteElement.txtEmail(driver);
-                txtEmail.SendKeys("Test");
+                txtEmail.SendKeys("Test@gmail.com");
                 IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
                 txtSignUpPassword.SendKeys("TestApril2023");
                 IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
@@ -737,22 +740,209 @@ namespace QAProject
                 provinceComboBox.Click();
                 IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
                 nbOption.Click();
-                IWebElement txtpostalcode = WebsiteElement.txtPostalCode(driver);
+                IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
+                txtpostalcode.SendKeys("E3A 1V3");
                 IWebElement txtUrl = WebsiteElement.txtUrl(driver);
                 txtUrl.SendKeys("www.google.com");
                 IWebElement description = WebsiteElement.txtDescription(driver);
                 description.SendKeys("This is a test");
                 IWebElement location = WebsiteElement.txtLocation(driver);
                 location.SendKeys("Fredericton");
-                IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
-                BtnRegister.Click();
+
                 //check if the passwords are the same
                 if (txtSignUpPassword.Text == txtSignUpConfirmPassword.Text)
                 {
+
+                    Thread.Sleep(1000);
+                    IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                    BtnRegister.Click();
+                    Thread.Sleep(1000);
+                    if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                    {
+                        driver.SwitchTo().Alert().Accept();
+                        return true;
+                    }
+                    else
+                    {
+                        driver.SwitchTo().Alert().Accept();
+                        return false;
+                    }
+
+
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (NoAlertPresentException)
+            {
+                return false;
+            }
+
+
+
+
+
+        }
+        //REG02 - TEST REGISTRATION -Check if email is correct
+        public static bool TestReg02(IWebDriver driver)
+        {
+            try
+            {
+                Thread.Sleep(4000);
+                IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
+                txtFirstName.SendKeys("Test");
+                IWebElement txtLastName = WebsiteElement.txtLastName(driver);
+                txtLastName.SendKeys("April");
+                IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
+                txtScreenName.SendKeys("Test2");
+                IWebElement txtEmail = WebsiteElement.txtEmail(driver);
+                string email = "http://testnbcc.ca/";
+                txtEmail.SendKeys(email);
+                IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
+                txtSignUpPassword.SendKeys("TestApril2023");
+                IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
+                txtSignUpConfirmPassword.SendKeys("TestApril2023");
+                IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
+                txtPhone.SendKeys("(506) 123-4456");
+                IWebElement txtAddress = WebsiteElement.txtAddress(driver);
+                txtAddress.SendKeys("123 Main Street");
+                IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
+                provinceComboBox.Click();
+                IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
+                nbOption.Click();
+                IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
+                txtpostalcode.SendKeys("E3A 1V3");
+                IWebElement txtUrl = WebsiteElement.txtUrl(driver);
+                txtUrl.SendKeys("www.google.com");
+                IWebElement description = WebsiteElement.txtDescription(driver);
+                description.SendKeys("This is a test");
+                IWebElement location = WebsiteElement.txtLocation(driver);
+                location.SendKeys("Fredericton");
+
+                //check if the email is correct
+                if (email.Contains("@") && email.EndsWith(".com"))
+                {
+                    IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                    BtnRegister.Click();
+
+
+
+                    if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                    {
+                        driver.SwitchTo().Alert().Accept();
+                        return true;
+                    }
+                    else
+                    {
+
+                        driver.SwitchTo().Alert().Accept();
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                    BtnRegister.Click();
+                    if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                    {
+                        driver.SwitchTo().Alert().Accept();
+                        return true;
+                    }
+                    else
+                    {
+
+                        driver.SwitchTo().Alert().Accept();
+                        return false;
+                    }
+
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //REG03 - TEST REGISTRATION -check username
+        public static bool TestReg03(IWebDriver driver)
+        {
+            try
+            {
+                Thread.Sleep(4000);
+                IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
+                txtFirstName.SendKeys("Test");
+                IWebElement txtLastName = WebsiteElement.txtLastName(driver);
+                txtLastName.SendKeys("April");
+                IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
+                txtScreenName.SendKeys("nick");
+                IWebElement txtEmail = WebsiteElement.txtEmail(driver);
+                txtEmail.SendKeys("Test@gmail.com");
+                IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
+                txtSignUpPassword.SendKeys("TestApril2023");
+                IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
+                txtSignUpConfirmPassword.SendKeys("TestApril2023");
+                IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
+                txtPhone.SendKeys("(506) 123-4456");
+                IWebElement txtAddress = WebsiteElement.txtAddress(driver);
+                txtAddress.SendKeys("123 Main Street");
+                IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
+                provinceComboBox.Click();
+                IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
+                nbOption.Click();
+                IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
+                txtpostalcode.SendKeys("E3A 1V3");
+                IWebElement txtUrl = WebsiteElement.txtUrl(driver);
+                txtUrl.SendKeys("www.google.com");
+                IWebElement description = WebsiteElement.txtDescription(driver);
+                description.SendKeys("This is a test");
+                IWebElement location = WebsiteElement.txtLocation(driver);
+                location.SendKeys("Fredericton");
+
+
+
+                Thread.Sleep(1000);
+                IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                BtnRegister.Click();
+
+                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                {
+                    driver.SwitchTo().Alert().Accept();
                     return true;
                 }
                 else
                 {
+                    driver.SwitchTo().Alert().Accept();
+                    return false;
+                }
+
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //REG04 - TEST REGISTRATION -Check Logo page
+        public static bool TestReg04(IWebDriver driver)
+        {
+            try
+            {
+                Thread.Sleep(1000);
+                IWebElement logoImage = driver.FindElement(By.CssSelector(".logo"));
+                logoImage.Click();
+                Thread.Sleep(1000);
+
+                if (driver.Title.Contains("404 Not Found"))
+                {
+                    driver.Navigate().Back();
+                    return true;
+                }
+                else
+                {
+
                     return false;
                 }
             }
@@ -760,12 +950,319 @@ namespace QAProject
             {
                 return false;
             }
+        }
+        //REG05 - TEST REGISTRATION -Test phone number
+        public static bool TestReg05(IWebDriver driver)
+        {
+            try
+            {
+                Thread.Sleep(4000);
+                IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
+                txtFirstName.SendKeys("Test");
+                IWebElement txtLastName = WebsiteElement.txtLastName(driver);
+                txtLastName.SendKeys("April");
+                IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
+                txtScreenName.SendKeys("test5");
+                IWebElement txtEmail = WebsiteElement.txtEmail(driver);
+                txtEmail.SendKeys("Test@gmail.comt");
+                IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
+                txtSignUpPassword.SendKeys("TestApril2023");
+                IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
+                txtSignUpConfirmPassword.SendKeys("TestApril2023");
+                IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
+                txtPhone.SendKeys("asdasdasd");
+                IWebElement txtAddress = WebsiteElement.txtAddress(driver);
+                txtAddress.SendKeys("123 Main Street");
+                IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
+                provinceComboBox.Click();
+                IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
+                nbOption.Click();
+                IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
+                txtpostalcode.SendKeys("E3A 1V3");
+                IWebElement txtUrl = WebsiteElement.txtUrl(driver);
+                txtUrl.SendKeys("www.google.com");
+                IWebElement description = WebsiteElement.txtDescription(driver);
+                description.SendKeys("This is a test");
+                IWebElement location = WebsiteElement.txtLocation(driver);
+                location.SendKeys("Fredericton");
 
+                Thread.Sleep(1000);
 
+                IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                BtnRegister.Click();
+                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                {
+                    driver.SwitchTo().Alert().Accept();
+                    return true;
+                }
+                else
+                {
 
+                    driver.SwitchTo().Alert().Accept();
+                    driver.Navigate().Refresh();
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //REG06 - TEST REGISTRATION -test address
+        public static bool TestReg06(IWebDriver driver)
+        {
+            try
+            {
+                Thread.Sleep(4000);
+                IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
+                txtFirstName.SendKeys("Test");
+                IWebElement txtLastName = WebsiteElement.txtLastName(driver);
+                txtLastName.SendKeys("April");
+                IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
+                txtScreenName.SendKeys("test6");
+                IWebElement txtEmail = WebsiteElement.txtEmail(driver);
+                txtEmail.SendKeys("Test@gmail.com");
+                IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
+                txtSignUpPassword.SendKeys("TestApril2023");
+                IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
+                txtSignUpConfirmPassword.SendKeys("TestApril2023");
+                IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
+                txtPhone.SendKeys("(506) 123-4456");
+                IWebElement txtAddress = WebsiteElement.txtAddress(driver);
+                txtAddress.SendKeys("qweqweqwe");
+                IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
+                provinceComboBox.Click();
+                IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
+                nbOption.Click();
+                IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
+                txtpostalcode.SendKeys("E3A 1V3");
+                IWebElement txtUrl = WebsiteElement.txtUrl(driver);
+                txtUrl.SendKeys("www.google.com");
+                IWebElement description = WebsiteElement.txtDescription(driver);
+                description.SendKeys("This is a test");
+                IWebElement location = WebsiteElement.txtLocation(driver);
+                location.SendKeys("Fredericton");
+
+                Thread.Sleep(1000);
+
+                IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                BtnRegister.Click();
+                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                {
+                    driver.SwitchTo().Alert().Accept();
+                    return true;
+                }
+                else
+                {
+
+                    driver.SwitchTo().Alert().Accept();
+                    driver.Navigate().Refresh();
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //REG07 - TEST REGISTRATION -test URL
+        public static bool TestReg07(IWebDriver driver)
+        {
+            try
+            {
+                Thread.Sleep(4000);
+                IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
+                txtFirstName.SendKeys("Test");
+                IWebElement txtLastName = WebsiteElement.txtLastName(driver);
+                txtLastName.SendKeys("April");
+                IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
+                txtScreenName.SendKeys("test6");
+                IWebElement txtEmail = WebsiteElement.txtEmail(driver);
+                txtEmail.SendKeys("Test@gmail.com");
+                IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
+                txtSignUpPassword.SendKeys("TestApril2023");
+                IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
+                txtSignUpConfirmPassword.SendKeys("TestApril2023");
+                IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
+                txtPhone.SendKeys("(506) 123-4456");
+                IWebElement txtAddress = WebsiteElement.txtAddress(driver);
+                txtAddress.SendKeys("123 Main Street");
+                IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
+                provinceComboBox.Click();
+                IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
+                nbOption.Click();
+                IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
+                txtpostalcode.SendKeys("E3A 1V3");
+                IWebElement txtUrl = WebsiteElement.txtUrl(driver);
+                txtUrl.SendKeys("testestestestest");
+                IWebElement description = WebsiteElement.txtDescription(driver);
+                description.SendKeys("This is a test");
+                IWebElement location = WebsiteElement.txtLocation(driver);
+                location.SendKeys("Fredericton");
+
+                Thread.Sleep(1000);
+
+                IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                BtnRegister.Click();
+                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                {
+                    driver.SwitchTo().Alert().Accept();
+                    return true;
+                }
+                else
+                {
+
+                    driver.SwitchTo().Alert().Accept();
+                    driver.Navigate().Refresh();
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //REG08 - TEST REGISTRATION -test registration with valid data
+        public static bool TestReg08(IWebDriver driver)
+        {
+            try
+            {
+                Thread.Sleep(4000);
+                IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
+                txtFirstName.SendKeys("Selenium");
+
+                IWebElement txtLastName = WebsiteElement.txtLastName(driver);
+                txtLastName.SendKeys("Last Name");
+
+                IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
+                txtScreenName.SendKeys("selenium");
+
+                IWebElement txtEmail = WebsiteElement.txtEmail(driver);
+                txtEmail.SendKeys("selenium@test.ca");
+
+                IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
+                txtSignUpPassword.SendKeys("selenium");
+
+                IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
+                txtSignUpConfirmPassword.SendKeys("selenium");
+
+                IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
+                txtPhone.SendKeys("(506) 123-4456");
+
+                IWebElement txtAddress = WebsiteElement.txtAddress(driver);
+                txtAddress.SendKeys("123 Main Street");
+
+                IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
+                provinceComboBox.Click();
+
+                IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
+                nbOption.Click();
+
+                IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
+                txtpostalcode.SendKeys("E3A 1V3");
+
+                IWebElement txtUrl = WebsiteElement.txtUrl(driver);
+                txtUrl.SendKeys("www.google.com");
+
+                IWebElement description = WebsiteElement.txtDescription(driver);
+                description.SendKeys("This is a test");
+
+                IWebElement location = WebsiteElement.txtLocation(driver);
+                location.SendKeys("Fredericton");
+
+                Thread.Sleep(1000);
+
+                IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                BtnRegister.Click();
+                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                {
+                    driver.SwitchTo().Alert().Accept();
+                    return true;
+                }
+                else
+                {
+
+                    driver.SwitchTo().Alert().Accept();
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //REG09 - TEST REGISTRATION -test registration with valid data
+        public static bool TestReg09(IWebDriver driver)
+        {
+            try
+            {
+                Thread.Sleep(4000);
+                IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
+                txtFirstName.SendKeys("Selenium");
+
+                IWebElement txtLastName = WebsiteElement.txtLastName(driver);
+                txtLastName.SendKeys("Last Name");
+
+                IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
+                txtScreenName.SendKeys("TestUser$$@@");
+
+                IWebElement txtEmail = WebsiteElement.txtEmail(driver);
+                txtEmail.SendKeys("selenium@test.ca");
+
+                IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
+                txtSignUpPassword.SendKeys("selenium");
+
+                IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
+                txtSignUpConfirmPassword.SendKeys("selenium");
+
+                IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
+                txtPhone.SendKeys("(506) 123-4456");
+
+                IWebElement txtAddress = WebsiteElement.txtAddress(driver);
+                txtAddress.SendKeys("123 Main Street");
+
+                IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
+                provinceComboBox.Click();
+
+                IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
+                nbOption.Click();
+
+                IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
+                txtpostalcode.SendKeys("E3A 1V3");
+
+                IWebElement txtUrl = WebsiteElement.txtUrl(driver);
+                txtUrl.SendKeys("www.google.com");
+
+                IWebElement description = WebsiteElement.txtDescription(driver);
+                description.SendKeys("This is a test");
+
+                IWebElement location = WebsiteElement.txtLocation(driver);
+                location.SendKeys("Fredericton");
+
+                Thread.Sleep(1000);
+
+                IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                BtnRegister.Click();
+                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                {
+                    driver.SwitchTo().Alert().Accept();
+                    return true;
+                }
+                else
+                {
+
+                    driver.SwitchTo().Alert().Accept();
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
+
 
 
 

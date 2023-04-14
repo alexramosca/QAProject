@@ -334,16 +334,100 @@ namespace QAProject
             }
             LogOutWithHome(driver);
             Thread.Sleep(5000);
-
+            //Brett's Tests Start
             //TEST REG01 
             if (SiteTest.TestReg01(driver))
             {
-                Console.WriteLine("MENU06 - Page Redirect to Login Page - TEST PASS");
+                Console.WriteLine("REG01 - Page Redirect to Registration Page - TEST PASS");
             }
             else
             {
-                Console.WriteLine("MENU06 - Page Redirect to Login page - TEST FAIL");
+                Console.WriteLine("REG01 - Page Redirect to Registration Page - TEST FAIL");
             }
+            Thread.Sleep(5000);
+            
+            //TEST REG02
+            if (SiteTest.TestReg02(driver))
+            {
+                Console.WriteLine("REG02 - Page Redirect to Registration Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("REG02 - Page Redirect to Registration Page - TEST FAIL");
+            }
+            Thread.Sleep(5000);
+
+            //TEST REG03
+            if (SiteTest.TestReg03(driver))
+            {
+                Console.WriteLine("REG03 - Page Redirect to Registration Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("REG03 - Page Redirect to Registration Page - TEST FAIL");
+            }
+            Thread.Sleep(5000);
+            //TEST REG04
+            if (SiteTest.TestReg04(driver))
+            {
+                Console.WriteLine("REG04 - Page Redirect to Registration Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("REG04 - Page Redirect to Registration Page - TEST FAIL");
+            }
+            Thread.Sleep(5000);
+            //TEST REG05
+            if (SiteTest.TestReg05(driver))
+            {
+                Console.WriteLine("REG05 - Page Redirect to Registration Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("REG05 - Page Redirect to Registration Page - TEST FAIL");
+            }
+            Thread.Sleep(5000);
+            //TEST REG06
+            if (SiteTest.TestReg06(driver))
+            {
+                Console.WriteLine("REG06 - Page Redirect to Registration Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("REG06 - Page Redirect to Registration Page - TEST FAIL");
+            }
+            Thread.Sleep(5000);
+            //TEST REG07
+            if (SiteTest.TestReg07(driver))
+            {
+                Console.WriteLine("REG07 - Page Redirect to Registration Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("REG07 - Page Redirect to Registration Page - TEST FAIL");
+            }
+            Thread.Sleep(5000);
+            //TEST REG08
+            if (SiteTest.TestReg08(driver))
+            {
+                Console.WriteLine("REG08 - Page Redirect to Registration Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("REG08 - Page Redirect to Registration Page - TEST FAIL");
+            }
+            Thread.Sleep(5000);
+            //TEST REG09
+            if (SiteTest.TestReg09(driver))
+            {
+                Console.WriteLine("REG09 - Page Redirect to Registration Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("REG09 - Page Redirect to Registration Page - TEST FAIL");
+            }
+
+            
 
 
 
