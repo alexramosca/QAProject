@@ -332,16 +332,28 @@ namespace QAProject
             {
                 Console.WriteLine("MENU05 - Page Redirect to Contact us page - TEST FAIL");
             }
-
+            LogOutWithHome(driver);
             Thread.Sleep(5000);
 
+            //TEST REG01 
+            if (SiteTest.TestReg01(driver))
+            {
+                Console.WriteLine("MENU06 - Page Redirect to Login Page - TEST PASS");
+            }
+            else
+            {
+                Console.WriteLine("MENU06 - Page Redirect to Login page - TEST FAIL");
+            }
 
 
 
 
 
 
-            driver.Quit();
+
+
+
+
 
 
 
@@ -349,12 +361,10 @@ namespace QAProject
 
 
 
-            Thread.Sleep(5000);
-            driver.Quit();
 
 
-           /* IWebElement btnLogOut = WebsiteElement.logOut(driver);
-            btnLogOut.Click();*/
+            /* IWebElement btnLogOut = WebsiteElement.logOut(driver);
+             btnLogOut.Click();*/
         }
 
         public static void LogOutWithHome(IWebDriver driver)

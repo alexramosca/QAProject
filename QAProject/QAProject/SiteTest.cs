@@ -708,8 +708,64 @@ namespace QAProject
             }
 
         }
+        public static bool TestReg01(IWebDriver driver)
+        {
 
+            try
+            {
+                // Navigate to the form page
+                IWebElement link = driver.FindElement(By.LinkText("Click Here"));
+                link.Click();
+                Thread.Sleep(4000);
+                IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
+                txtFirstName.SendKeys("Test");
+                IWebElement txtLastName = WebsiteElement.txtLastName(driver);
+                txtLastName.SendKeys("April");
+                IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
+                txtScreenName.SendKeys("Test");
+                IWebElement txtEmail = WebsiteElement.txtEmail(driver);
+                txtEmail.SendKeys("Test");
+                IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
+                txtSignUpPassword.SendKeys("TestApril2023");
+                IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
+                txtSignUpConfirmPassword.SendKeys("TestApril2023");
+                IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
+                txtPhone.SendKeys("(506) 123-4456");
+                IWebElement txtAddress = WebsiteElement.txtAddress(driver);
+                txtAddress.SendKeys("123 Main Street");
+                IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
+                provinceComboBox.Click();
+                IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
+                nbOption.Click();
+                IWebElement txtpostalcode = WebsiteElement.txtPostalCode(driver);
+                IWebElement txtUrl = WebsiteElement.txtUrl(driver);
+                txtUrl.SendKeys("www.google.com");
+                IWebElement description = WebsiteElement.txtDescription(driver);
+                description.SendKeys("This is a test");
+                IWebElement location = WebsiteElement.txtLocation(driver);
+                location.SendKeys("Fredericton");
+                IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
+                BtnRegister.Click();
+                //check if the passwords are the same
+                if (txtSignUpPassword.Text == txtSignUpConfirmPassword.Text)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+
+
+        }
     }
 }
+
 
 
