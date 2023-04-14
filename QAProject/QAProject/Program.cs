@@ -391,14 +391,15 @@ namespace QAProject
                 Console.WriteLine("REG05 - Testing invalid phone number - TEST FAIL");
             }
             Thread.Sleep(5000);
-            //TEST REG06
+
+            //TEST REG06 -- Its failing because accepts invalid address format
             if (SiteTest.TestReg06(driver))
             {
-                Console.WriteLine("REG06 - Page Redirect to Registration Page - TEST PASS");
+                Console.WriteLine("REG06 - Test invalid address format - TEST PASS");
             }
             else
             {
-                Console.WriteLine("REG06 - Page Redirect to Registration Page - TEST FAIL");
+                Console.WriteLine("REG06 - Test invalid address format - TEST FAIL");
             }
             Thread.Sleep(5000);
             //TEST REG07

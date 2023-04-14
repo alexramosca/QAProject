@@ -1013,15 +1013,19 @@ namespace QAProject
         {
             try
             {
+                var faker = new Faker();
+                var firstName = faker.Name.FirstName();
+                var lastName = faker.Name.LastName();
+
                 Thread.Sleep(4000);
                 IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
-                txtFirstName.SendKeys("Test");
+                txtFirstName.SendKeys(firstName);
                 IWebElement txtLastName = WebsiteElement.txtLastName(driver);
-                txtLastName.SendKeys("April");
+                txtLastName.SendKeys(lastName);
                 IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
-                txtScreenName.SendKeys("test6");
+                txtScreenName.SendKeys(faker.Internet.UserName(firstName, lastName));
                 IWebElement txtEmail = WebsiteElement.txtEmail(driver);
-                txtEmail.SendKeys("Test@gmail.com");
+                txtEmail.SendKeys(faker.Internet.Email(firstName, lastName));
                 IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
                 txtSignUpPassword.SendKeys("TestApril2023");
                 IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
@@ -1050,14 +1054,14 @@ namespace QAProject
                 if (driver.SwitchTo().Alert().Text.Contains("successfully"))
                 {
                     driver.SwitchTo().Alert().Accept();
-                    return true;
+                    return false;
                 }
                 else
                 {
 
                     driver.SwitchTo().Alert().Accept();
                     driver.Navigate().Refresh();
-                    return false;
+                    return true;
                 }
             }
             catch
