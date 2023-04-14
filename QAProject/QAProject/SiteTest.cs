@@ -1051,15 +1051,17 @@ namespace QAProject
 
                 IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
                 BtnRegister.Click();
-                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                Thread.Sleep(4000);
+                IAlert alert = driver.SwitchTo().Alert();
+                if (alert.Text.Contains("your account is created Sucessfully!!"))
                 {
-                    driver.SwitchTo().Alert().Accept();
+                    alert.Accept();
                     return false;
                 }
                 else
                 {
 
-                    driver.SwitchTo().Alert().Accept();
+                    alert.Accept();
                     driver.Navigate().Refresh();
                     return true;
                 }
@@ -1074,15 +1076,19 @@ namespace QAProject
         {
             try
             {
+                var faker = new Faker();
+                var firstName = faker.Name.FirstName();
+                var lastName = faker.Name.LastName();
+
                 Thread.Sleep(4000);
                 IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
-                txtFirstName.SendKeys("Test");
+                txtFirstName.SendKeys(firstName);
                 IWebElement txtLastName = WebsiteElement.txtLastName(driver);
-                txtLastName.SendKeys("April");
+                txtLastName.SendKeys(lastName);
                 IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
-                txtScreenName.SendKeys("test6");
+                txtScreenName.SendKeys(faker.Internet.UserName(firstName, lastName));
                 IWebElement txtEmail = WebsiteElement.txtEmail(driver);
-                txtEmail.SendKeys("Test@gmail.com");
+                txtEmail.SendKeys(faker.Internet.Email(firstName, lastName));
                 IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
                 txtSignUpPassword.SendKeys("TestApril2023");
                 IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
@@ -1090,7 +1096,7 @@ namespace QAProject
                 IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
                 txtPhone.SendKeys("(506) 123-4456");
                 IWebElement txtAddress = WebsiteElement.txtAddress(driver);
-                txtAddress.SendKeys("123 Main Street");
+                txtAddress.SendKeys("qweqweqwe");
                 IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
                 provinceComboBox.Click();
                 IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
@@ -1098,7 +1104,7 @@ namespace QAProject
                 IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
                 txtpostalcode.SendKeys("E3A 1V3");
                 IWebElement txtUrl = WebsiteElement.txtUrl(driver);
-                txtUrl.SendKeys("testestestestest");
+                txtUrl.SendKeys("sdgfdfhfghfgh");
                 IWebElement description = WebsiteElement.txtDescription(driver);
                 description.SendKeys("This is a test");
                 IWebElement location = WebsiteElement.txtLocation(driver);
@@ -1106,19 +1112,18 @@ namespace QAProject
 
                 Thread.Sleep(1000);
 
-                IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
-                BtnRegister.Click();
-                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                IAlert alert = driver.SwitchTo().Alert();
+                if (alert.Text.Contains("your account is created Sucessfully!!"))
                 {
-                    driver.SwitchTo().Alert().Accept();
-                    return true;
+                    alert.Accept();
+                    return false;
                 }
                 else
                 {
 
-                    driver.SwitchTo().Alert().Accept();
+                    alert.Accept();
                     driver.Navigate().Refresh();
-                    return false;
+                    return true;
                 }
             }
             catch

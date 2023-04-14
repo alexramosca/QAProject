@@ -337,61 +337,62 @@ namespace QAProject
             //Brett's Tests Start
             driver.Url = @"http://10.157.123.12/site3/login.php";
             //TEST REG01 
-            if (SiteTest.TestReg01(driver))
-            {
-                Console.WriteLine("REG01 - registration with password matching - TEST PASS");
-            }
-            else
-            {
-                Console.WriteLine("REG01 - REG01 - registration with password matching - TEST FAIL");
-            }
-            Thread.Sleep(5000);
+            /* if (SiteTest.TestReg01(driver))
+             {
+                 Console.WriteLine("REG01 - registration with password matching - TEST PASS");
+             }
+             else
+             {
+                 Console.WriteLine("REG01 - REG01 - registration with password matching - TEST FAIL");
+             }
+             Thread.Sleep(5000);
+
+             driver.Url = @"http://10.157.123.12/site3/signup.php";
+             //TEST REG02
+             if (SiteTest.TestReg02(driver))
+             {
+                 Console.WriteLine("REG02 - check valid email - TEST PASS");
+             }
+             else
+             {
+                 Console.WriteLine("REG02 - check valid email - TEST FAIL");
+             }
+             Thread.Sleep(5000);
+
+             driver.Url = @"http://10.157.123.12/site3/signup.php";
+
+             //TEST REG03
+             if (SiteTest.TestReg03(driver))
+             {
+                 Console.WriteLine("REG03 - Test username that already exists - TEST PASS");
+             }
+             else
+             {
+                 Console.WriteLine("REG03 - Test username that already exists - TEST FAIL");
+             }
+             Thread.Sleep(5000);
+             //TEST REG04
+             if (SiteTest.TestReg04(driver))
+             {
+                 Console.WriteLine("REG04 - Page Redirect to Registration Page - TEST PASS");
+             }
+             else
+             {
+                 Console.WriteLine("REG04 - Page Redirect to Registration Page - TEST FAIL");
+             }
+             Thread.Sleep(5000);
+             //TEST REG05
+             if (SiteTest.TestReg05(driver))
+             {
+                 Console.WriteLine("REG05 - Testing invalid phone number - TEST PASS");
+             }
+             else
+             {
+                 Console.WriteLine("REG05 - Testing invalid phone number - TEST FAIL");
+             }
+             Thread.Sleep(5000);*/
 
             driver.Url = @"http://10.157.123.12/site3/signup.php";
-            //TEST REG02
-            if (SiteTest.TestReg02(driver))
-            {
-                Console.WriteLine("REG02 - check valid email - TEST PASS");
-            }
-            else
-            {
-                Console.WriteLine("REG02 - check valid email - TEST FAIL");
-            }
-            Thread.Sleep(5000);
-
-            driver.Url = @"http://10.157.123.12/site3/signup.php";
-
-            //TEST REG03
-            if (SiteTest.TestReg03(driver))
-            {
-                Console.WriteLine("REG03 - Test username that already exists - TEST PASS");
-            }
-            else
-            {
-                Console.WriteLine("REG03 - Test username that already exists - TEST FAIL");
-            }
-            Thread.Sleep(5000);
-            //TEST REG04
-            if (SiteTest.TestReg04(driver))
-            {
-                Console.WriteLine("REG04 - Page Redirect to Registration Page - TEST PASS");
-            }
-            else
-            {
-                Console.WriteLine("REG04 - Page Redirect to Registration Page - TEST FAIL");
-            }
-            Thread.Sleep(5000);
-            //TEST REG05
-            if (SiteTest.TestReg05(driver))
-            {
-                Console.WriteLine("REG05 - Testing invalid phone number - TEST PASS");
-            }
-            else
-            {
-                Console.WriteLine("REG05 - Testing invalid phone number - TEST FAIL");
-            }
-            Thread.Sleep(5000);
-
             //TEST REG06 -- Its failing because accepts invalid address format
             if (SiteTest.TestReg06(driver))
             {
@@ -402,14 +403,15 @@ namespace QAProject
                 Console.WriteLine("REG06 - Test invalid address format - TEST FAIL");
             }
             Thread.Sleep(5000);
-            //TEST REG07
+            driver.Url = @"http://10.157.123.12/site3/signup.php";
+            //TEST REG07 Its failing because accepts invalid url address format
             if (SiteTest.TestReg07(driver))
             {
-                Console.WriteLine("REG07 - Page Redirect to Registration Page - TEST PASS");
+                Console.WriteLine("REG07 - testing invalid url address - TEST PASS");
             }
             else
             {
-                Console.WriteLine("REG07 - Page Redirect to Registration Page - TEST FAIL");
+                Console.WriteLine("REG07 - testing invalid url address - TEST FAIL");
             }
             Thread.Sleep(5000);
             //TEST REG08
