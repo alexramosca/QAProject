@@ -466,7 +466,7 @@ namespace QAProject
             Thread.Sleep(3000);
 
             IWebElement btnChooseFile = WebsiteElement.chooseFile(driver);
-            string filePath = Path.Combine(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName).FullName, "large.jpg");
+            string filePath = Path.Combine(Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName).FullName, "short.png");
             btnChooseFile.SendKeys(filePath);
             Thread.Sleep(5000);
 
