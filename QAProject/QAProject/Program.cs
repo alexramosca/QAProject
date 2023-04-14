@@ -426,6 +426,7 @@ namespace QAProject
             {
                 Console.WriteLine("REG09 - Page Redirect to Registration Page - TEST FAIL");
             }
+            //end of Brett's Tests
 
             
 
@@ -441,7 +442,6 @@ namespace QAProject
 
 
 
-            //ALEX'S TESTS END
 
 
 

@@ -1191,7 +1191,7 @@ namespace QAProject
                 return false;
             }
         }
-        //REG09 - TEST REGISTRATION -test registration with valid data
+        //REG09 - TEST REGISTRATION -test screen name
         public static bool TestReg09(IWebDriver driver)
         {
             try
