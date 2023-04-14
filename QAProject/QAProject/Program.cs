@@ -27,7 +27,7 @@ namespace QAProject
             //RICO'S TESTS START
 
              driver.Manage().Window.Size = new System.Drawing.Size(1620, 980);
-
+            
             //LOG01 - Test Login with Invalid Information
 
             if (SiteTest.Login(driver, "adsdsaadsdsa", "qweweqweqwqe"))
@@ -147,7 +147,7 @@ namespace QAProject
 
             //LogOut(driver);
 
-
+            
             bool MESSAGE02 = SiteTest.MESSAGE02(driver);
 
             if (MESSAGE02)// TEST SENDING A VALID MESSAGE 
@@ -333,8 +333,9 @@ namespace QAProject
                 Console.WriteLine("MENU05 - Page Redirect to Contact us page - TEST FAIL");
             }
             LogOutWithHome(driver);
-            Thread.Sleep(5000);
+            Thread.Sleep(5000); 
             //Brett's Tests Start
+            driver.Url = @"http://10.157.123.12/site3/login.php";
             //TEST REG01 
             if (SiteTest.TestReg01(driver))
             {
@@ -427,8 +428,10 @@ namespace QAProject
                 Console.WriteLine("REG09 - Page Redirect to Registration Page - TEST FAIL");
             }
             //end of Brett's Tests
+            Thread.Sleep(5000);
+            driver.Quit();
 
-            
+
 
 
 
