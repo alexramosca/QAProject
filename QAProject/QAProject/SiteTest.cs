@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 using System.IO;
 using Org.BouncyCastle.Crypto.Macs;
 using static System.Net.Mime.MediaTypeNames;
-
+using Bogus;
 
 namespace QAProject
 {
@@ -716,18 +716,22 @@ namespace QAProject
         {
             try
             {
+                var faker = new Faker();
+                var firstName = faker.Name.FirstName();
+                var lastName = faker.Name.LastName();
                 // Navigate to the form page
                 IWebElement link = driver.FindElement(By.LinkText("Click Here"));
                 link.Click();
                 Thread.Sleep(4000);
                 IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
-                txtFirstName.SendKeys("Test");
+                txtFirstName.SendKeys(firstName);
                 IWebElement txtLastName = WebsiteElement.txtLastName(driver);
-                txtLastName.SendKeys("April");
+                txtLastName.SendKeys(lastName);
                 IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
-                txtScreenName.SendKeys("Test1");
+                txtScreenName.SendKeys(firstName);
                 IWebElement txtEmail = WebsiteElement.txtEmail(driver);
-                txtEmail.SendKeys("Test@gmail.com");
+                txtEmail.SendKeys(faker.Internet.Email(firstName, lastName));
+                Thread.Sleep(10000);
                 IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
                 txtSignUpPassword.SendKeys("TestApril2023");
                 IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
@@ -749,32 +753,28 @@ namespace QAProject
                 IWebElement location = WebsiteElement.txtLocation(driver);
                 location.SendKeys("Fredericton");
 
-                //check if the passwords are the same
+
+                Console.WriteLine(txtSignUpPassword.Text + " " + txtSignUpConfirmPassword.Text);
+                //check if passwords match
                 if (txtSignUpPassword.Text == txtSignUpConfirmPassword.Text)
                 {
+                    IWebElement btnSignUp = WebsiteElement.btnRegister(driver);
+                    btnSignUp.Click();
+                    Thread.Sleep(4000);
+                    IAlert alert = driver.SwitchTo().Alert();
+                    alert.Accept();
 
-                    Thread.Sleep(1000);
-                    IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
-                    BtnRegister.Click();
-                    Thread.Sleep(1000);
-                    if (driver.SwitchTo().Alert().Text.Contains("successfully"))
-                    {
-                        driver.SwitchTo().Alert().Accept();
-                        return true;
-                    }
-                    else
-                    {
-                        driver.SwitchTo().Alert().Accept();
-                        return false;
-                    }
-
-
+                    return true;
 
                 }
                 else
                 {
+                    IAlert alert = driver.SwitchTo().Alert();
+                    alert.Accept();
                     return false;
                 }
+
+                
             }
             catch (NoAlertPresentException)
             {

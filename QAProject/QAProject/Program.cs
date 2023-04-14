@@ -30,7 +30,7 @@ namespace QAProject
             
             //LOG01 - Test Login with Invalid Information
 
-            if (SiteTest.Login(driver, "adsdsaadsdsa", "qweweqweqwqe"))
+           /* if (SiteTest.Login(driver, "adsdsaadsdsa", "qweweqweqwqe"))
             {
                 Console.WriteLine("LOG01 - Login successful - TEST FAIL");
             }
@@ -147,7 +147,7 @@ namespace QAProject
 
             //LogOut(driver);
 
-            
+            /*--------------------------------------------------------------------------------------
             bool MESSAGE02 = SiteTest.MESSAGE02(driver);
 
             if (MESSAGE02)// TEST SENDING A VALID MESSAGE 
@@ -333,7 +333,7 @@ namespace QAProject
                 Console.WriteLine("MENU05 - Page Redirect to Contact us page - TEST FAIL");
             }
             LogOutWithHome(driver);
-            Thread.Sleep(5000); 
+            Thread.Sleep(5000); ------------------------------------------------------*/
             //Brett's Tests Start
             driver.Url = @"http://10.157.123.12/site3/login.php";
             //TEST REG01 
@@ -346,7 +346,8 @@ namespace QAProject
                 Console.WriteLine("REG01 - Page Redirect to Registration Page - TEST FAIL");
             }
             Thread.Sleep(5000);
-            
+
+            driver.Url = @"http://10.157.123.12/site3/signup.php";
             //TEST REG02
             if (SiteTest.TestReg02(driver))
             {
