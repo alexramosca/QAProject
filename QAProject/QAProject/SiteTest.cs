@@ -12,6 +12,7 @@ using System.IO;
 using Org.BouncyCastle.Crypto.Macs;
 using static System.Net.Mime.MediaTypeNames;
 using Bogus;
+using Org.BouncyCastle.Crypto.Tls;
 
 namespace QAProject
 {
@@ -846,26 +847,10 @@ namespace QAProject
                         return false;
                     }
 
-
-
-                    
-
                 }
                 else
                 {
-                    IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
-                    BtnRegister.Click();
-                    if (driver.SwitchTo().Alert().Text.Contains("successfully"))
-                    {
-                        driver.SwitchTo().Alert().Accept();
-                        return true;
-                    }
-                    else
-                    {
-
-                        driver.SwitchTo().Alert().Accept();
-                        return false;
-                    }
+                    return false;
 
                 }
             }
@@ -879,11 +864,15 @@ namespace QAProject
         {
             try
             {
+                var faker = new Faker();
+                var firstName = faker.Name.FirstName();
+                var lastName = faker.Name.LastName();
+
                 Thread.Sleep(4000);
                 IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
-                txtFirstName.SendKeys("Test");
+                txtFirstName.SendKeys("nick");
                 IWebElement txtLastName = WebsiteElement.txtLastName(driver);
-                txtLastName.SendKeys("April");
+                txtLastName.SendKeys("nick");
                 IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
                 txtScreenName.SendKeys("nick");
                 IWebElement txtEmail = WebsiteElement.txtEmail(driver);
@@ -914,15 +903,17 @@ namespace QAProject
                 Thread.Sleep(1000);
                 IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
                 BtnRegister.Click();
+                Thread.Sleep(4000);
+                IAlert alert = driver.SwitchTo().Alert();
 
-                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                if (alert.Text.Contains("The username is already exists please choose another name"))
                 {
-                    driver.SwitchTo().Alert().Accept();
+                    alert.Accept();
                     return true;
                 }
                 else
                 {
-                    driver.SwitchTo().Alert().Accept();
+                    alert.Accept();
                     return false;
                 }
 
@@ -946,12 +937,12 @@ namespace QAProject
                 if (driver.Title.Contains("404 Not Found"))
                 {
                     driver.Navigate().Back();
-                    return true;
+                    return false;
                 }
                 else
                 {
 
-                    return false;
+                    return true;
                 }
             }
             catch

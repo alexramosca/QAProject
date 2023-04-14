@@ -351,22 +351,24 @@ namespace QAProject
             //TEST REG02
             if (SiteTest.TestReg02(driver))
             {
-                Console.WriteLine("REG02 - Page Redirect to Registration Page - TEST PASS");
+                Console.WriteLine("REG02 - check valid email - TEST PASS");
             }
             else
             {
-                Console.WriteLine("REG02 - Page Redirect to Registration Page - TEST FAIL");
+                Console.WriteLine("REG02 - check valid email - TEST FAIL");
             }
             Thread.Sleep(5000);
+
+            driver.Url = @"http://10.157.123.12/site3/signup.php";
 
             //TEST REG03
             if (SiteTest.TestReg03(driver))
             {
-                Console.WriteLine("REG03 - Page Redirect to Registration Page - TEST PASS");
+                Console.WriteLine("REG03 - Test username that already exists - TEST PASS");
             }
             else
             {
-                Console.WriteLine("REG03 - Page Redirect to Registration Page - TEST FAIL");
+                Console.WriteLine("REG03 - Test username that already exists - TEST FAIL");
             }
             Thread.Sleep(5000);
             //TEST REG04
