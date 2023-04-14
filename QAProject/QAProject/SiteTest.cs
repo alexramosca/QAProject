@@ -722,7 +722,7 @@ namespace QAProject
                 // Navigate to the form page
                 IWebElement link = driver.FindElement(By.LinkText("Click Here"));
                 link.Click();
-                Thread.Sleep(4000);
+                
                 IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
                 txtFirstName.SendKeys(firstName);
                 IWebElement txtLastName = WebsiteElement.txtLastName(driver);
@@ -731,7 +731,7 @@ namespace QAProject
                 txtScreenName.SendKeys(firstName);
                 IWebElement txtEmail = WebsiteElement.txtEmail(driver);
                 txtEmail.SendKeys(faker.Internet.Email(firstName, lastName));
-                Thread.Sleep(10000);
+                
                 IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
                 txtSignUpPassword.SendKeys("TestApril2023");
                 IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
@@ -791,15 +791,19 @@ namespace QAProject
         {
             try
             {
+                var faker = new Faker();
+                var firstName = faker.Name.FirstName();
+                var lastName = faker.Name.LastName();
+
                 Thread.Sleep(4000);
                 IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
-                txtFirstName.SendKeys("Test");
+                txtFirstName.SendKeys(firstName);
                 IWebElement txtLastName = WebsiteElement.txtLastName(driver);
-                txtLastName.SendKeys("April");
+                txtLastName.SendKeys(lastName);
                 IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
-                txtScreenName.SendKeys("Test2");
+                txtScreenName.SendKeys(firstName);
                 IWebElement txtEmail = WebsiteElement.txtEmail(driver);
-                string email = "http://testnbcc.ca/";
+                string email = faker.Internet.Email(firstName, lastName);
                 txtEmail.SendKeys(email);
                 IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
                 txtSignUpPassword.SendKeys("TestApril2023");
@@ -827,20 +831,24 @@ namespace QAProject
                 {
                     IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
                     BtnRegister.Click();
+                    Thread.Sleep(4000);
+                    IAlert alert = driver.SwitchTo().Alert();
 
-
-
-                    if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                    //Test if the email is valid and the user is registered
+                    if (alert.Text.Contains("your account is created Sucessfully!!"))
                     {
-                        driver.SwitchTo().Alert().Accept();
+                        alert.Accept();
                         return true;
                     }
                     else
                     {
-
-                        driver.SwitchTo().Alert().Accept();
+                        alert.Accept();
                         return false;
                     }
+
+
+
+                    
 
                 }
                 else

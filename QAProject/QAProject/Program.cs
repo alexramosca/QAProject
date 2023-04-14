@@ -339,11 +339,11 @@ namespace QAProject
             //TEST REG01 
             if (SiteTest.TestReg01(driver))
             {
-                Console.WriteLine("REG01 - Page Redirect to Registration Page - TEST PASS");
+                Console.WriteLine("REG01 - registration with password matching - TEST PASS");
             }
             else
             {
-                Console.WriteLine("REG01 - Page Redirect to Registration Page - TEST FAIL");
+                Console.WriteLine("REG01 - REG01 - registration with password matching - TEST FAIL");
             }
             Thread.Sleep(5000);
 
