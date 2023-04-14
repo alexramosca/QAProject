@@ -30,7 +30,7 @@ namespace QAProject
             
             //LOG01 - Test Login with Invalid Information
 
-           /* if (SiteTest.Login(driver, "adsdsaadsdsa", "qweweqweqwqe"))
+            if (SiteTest.Login(driver, "adsdsaadsdsa", "qweweqweqwqe"))
             {
                 Console.WriteLine("LOG01 - Login successful - TEST FAIL");
             }
@@ -147,7 +147,7 @@ namespace QAProject
 
             //LogOut(driver);
 
-            /*--------------------------------------------------------------------------------------
+           
             bool MESSAGE02 = SiteTest.MESSAGE02(driver);
 
             if (MESSAGE02)// TEST SENDING A VALID MESSAGE 
@@ -333,11 +333,11 @@ namespace QAProject
                 Console.WriteLine("MENU05 - Page Redirect to Contact us page - TEST FAIL");
             }
             LogOutWithHome(driver);
-            Thread.Sleep(5000); ------------------------------------------------------*/
+            Thread.Sleep(5000); 
             //Brett's Tests Start
             driver.Url = @"http://10.157.123.12/site3/login.php";
             //TEST REG01 
-            /* if (SiteTest.TestReg01(driver))
+             if (SiteTest.TestReg01(driver))
              {
                  Console.WriteLine("REG01 - registration with password matching - TEST PASS");
              }
@@ -390,9 +390,9 @@ namespace QAProject
              {
                  Console.WriteLine("REG05 - Testing invalid phone number - TEST FAIL");
              }
-             Thread.Sleep(5000);*/
+             Thread.Sleep(5000);
 
-           /* driver.Url = @"http://10.157.123.12/site3/signup.php";
+            driver.Url = @"http://10.157.123.12/site3/signup.php";
             //TEST REG06 -- Its failing because accepts invalid address format
             if (SiteTest.TestReg06(driver))
             {
@@ -413,7 +413,7 @@ namespace QAProject
             {
                 Console.WriteLine("REG07 - testing invalid url address - TEST FAIL");
             }
-            Thread.Sleep(5000);*/
+            Thread.Sleep(5000);
 
             driver.Url = @"http://10.157.123.12/site3/signup.php";
             //TEST REG08
