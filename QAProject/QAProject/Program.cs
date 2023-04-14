@@ -17,7 +17,7 @@ namespace QAProject
             //Add the call for the tests on SiteTests class
 
             //reset the website
-           // SiteReset();
+            //SiteReset(); It didn't work
            
             //driver used on the project
             IWebDriver driver = new ChromeDriver(@"c:\Selenium"); //Careful with the path of your driver.
@@ -476,7 +476,7 @@ namespace QAProject
         }
         public static void SiteReset()
         {
-            string myConnectionString = "server=10.157.123.12;database=bitter-site4;uid=site3;pwd=KgpRPAIfliuGXxM8;";
+            string myConnectionString = "server=10.157.123.12;database=bitter-site3;uid=site3;pwd=2UN3HEWrmi8Nse5d;";
             connection = new MySqlConnection(myConnectionString);
             MySqlCommand command = new MySqlCommand();
 
