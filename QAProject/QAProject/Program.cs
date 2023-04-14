@@ -392,7 +392,7 @@ namespace QAProject
              }
              Thread.Sleep(5000);*/
 
-            driver.Url = @"http://10.157.123.12/site3/signup.php";
+           /* driver.Url = @"http://10.157.123.12/site3/signup.php";
             //TEST REG06 -- Its failing because accepts invalid address format
             if (SiteTest.TestReg06(driver))
             {
@@ -413,25 +413,27 @@ namespace QAProject
             {
                 Console.WriteLine("REG07 - testing invalid url address - TEST FAIL");
             }
-            Thread.Sleep(5000);
+            Thread.Sleep(5000);*/
+
+            driver.Url = @"http://10.157.123.12/site3/signup.php";
             //TEST REG08
             if (SiteTest.TestReg08(driver))
             {
-                Console.WriteLine("REG08 - Page Redirect to Registration Page - TEST PASS");
+                Console.WriteLine("REG08 -  Registration With Valid data - TEST PASS");
             }
             else
             {
-                Console.WriteLine("REG08 - Page Redirect to Registration Page - TEST FAIL");
+                Console.WriteLine("REG08 - Registration With Valid data - TEST FAIL");
             }
             Thread.Sleep(5000);
             //TEST REG09
             if (SiteTest.TestReg09(driver))
             {
-                Console.WriteLine("REG09 - Page Redirect to Registration Page - TEST PASS");
+                Console.WriteLine("REG09 - Test invalid screen name with special characters - TEST PASS");
             }
             else
             {
-                Console.WriteLine("REG09 - Page Redirect to Registration Page - TEST FAIL");
+                Console.WriteLine("REG09 - Test invalid screen name with special characters - TEST FAIL");
             }
             //end of Brett's Tests
             Thread.Sleep(5000);

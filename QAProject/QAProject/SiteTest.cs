@@ -1136,46 +1136,39 @@ namespace QAProject
         {
             try
             {
-                Thread.Sleep(4000);
+                var faker = new Faker();
+                var firstName = faker.Name.FirstName();
+                var lastName = faker.Name.LastName();
+                // Navigate to the form page
+                
+
                 IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
-                txtFirstName.SendKeys("Selenium");
-
+                txtFirstName.SendKeys(firstName);
                 IWebElement txtLastName = WebsiteElement.txtLastName(driver);
-                txtLastName.SendKeys("Last Name");
-
+                txtLastName.SendKeys(lastName);
                 IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
-                txtScreenName.SendKeys("selenium");
-
+                txtScreenName.SendKeys(firstName);
                 IWebElement txtEmail = WebsiteElement.txtEmail(driver);
-                txtEmail.SendKeys("selenium@test.ca");
+                txtEmail.SendKeys(faker.Internet.Email(firstName, lastName));
 
                 IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
-                txtSignUpPassword.SendKeys("selenium");
-
+                txtSignUpPassword.SendKeys("TestApril2023");
                 IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
-                txtSignUpConfirmPassword.SendKeys("selenium");
-
+                txtSignUpConfirmPassword.SendKeys("TestApril2023");
                 IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
                 txtPhone.SendKeys("(506) 123-4456");
-
                 IWebElement txtAddress = WebsiteElement.txtAddress(driver);
                 txtAddress.SendKeys("123 Main Street");
-
                 IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
                 provinceComboBox.Click();
-
                 IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
                 nbOption.Click();
-
                 IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
                 txtpostalcode.SendKeys("E3A 1V3");
-
                 IWebElement txtUrl = WebsiteElement.txtUrl(driver);
                 txtUrl.SendKeys("www.google.com");
-
                 IWebElement description = WebsiteElement.txtDescription(driver);
                 description.SendKeys("This is a test");
-
                 IWebElement location = WebsiteElement.txtLocation(driver);
                 location.SendKeys("Fredericton");
 
@@ -1183,15 +1176,17 @@ namespace QAProject
 
                 IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
                 BtnRegister.Click();
-                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                Thread.Sleep(3000);
+                IAlert alert = driver.SwitchTo().Alert();
+                if (alert.Text.Contains("your account is created Sucessfully!!"))
                 {
-                    driver.SwitchTo().Alert().Accept();
+                    alert.Accept();
                     return true;
                 }
                 else
                 {
 
-                    driver.SwitchTo().Alert().Accept();
+                    alert.Accept();
                     return false;
                 }
             }
@@ -1205,46 +1200,39 @@ namespace QAProject
         {
             try
             {
-                Thread.Sleep(4000);
+                var faker = new Faker();
+                var firstName = faker.Name.FirstName();
+                var lastName = faker.Name.LastName();
+                // Navigate to the form page
+
+
                 IWebElement txtFirstName = WebsiteElement.txtFirstName(driver);
-                txtFirstName.SendKeys("Selenium");
-
+                txtFirstName.SendKeys(firstName);
                 IWebElement txtLastName = WebsiteElement.txtLastName(driver);
-                txtLastName.SendKeys("Last Name");
-
+                txtLastName.SendKeys(lastName);
                 IWebElement txtScreenName = WebsiteElement.txtScreenName(driver);
-                txtScreenName.SendKeys("TestUser$$@@");
-
+                txtScreenName.SendKeys("testUser@@##");
                 IWebElement txtEmail = WebsiteElement.txtEmail(driver);
-                txtEmail.SendKeys("selenium@test.ca");
+                txtEmail.SendKeys(faker.Internet.Email(firstName, lastName));
 
                 IWebElement txtSignUpPassword = WebsiteElement.txtSignUpPassword(driver);
-                txtSignUpPassword.SendKeys("selenium");
-
+                txtSignUpPassword.SendKeys("TestApril2023");
                 IWebElement txtSignUpConfirmPassword = WebsiteElement.txtConfirmPassword(driver);
-                txtSignUpConfirmPassword.SendKeys("selenium");
-
+                txtSignUpConfirmPassword.SendKeys("TestApril2023");
                 IWebElement txtPhone = WebsiteElement.txtPhoneNumber(driver);
                 txtPhone.SendKeys("(506) 123-4456");
-
                 IWebElement txtAddress = WebsiteElement.txtAddress(driver);
                 txtAddress.SendKeys("123 Main Street");
-
                 IWebElement provinceComboBox = driver.FindElement(By.Id("province"));
                 provinceComboBox.Click();
-
                 IWebElement nbOption = driver.FindElement(By.XPath("//option[text()='New Brunswick']"));
                 nbOption.Click();
-
                 IWebElement txtpostalcode = driver.FindElement(By.Id("postalCode"));
                 txtpostalcode.SendKeys("E3A 1V3");
-
                 IWebElement txtUrl = WebsiteElement.txtUrl(driver);
                 txtUrl.SendKeys("www.google.com");
-
                 IWebElement description = WebsiteElement.txtDescription(driver);
                 description.SendKeys("This is a test");
-
                 IWebElement location = WebsiteElement.txtLocation(driver);
                 location.SendKeys("Fredericton");
 
@@ -1252,16 +1240,18 @@ namespace QAProject
 
                 IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
                 BtnRegister.Click();
-                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                Thread.Sleep(3000);
+                IAlert alert = driver.SwitchTo().Alert();
+                if (alert.Text.Contains("your account is created Sucessfully!!"))
                 {
-                    driver.SwitchTo().Alert().Accept();
-                    return true;
+                    alert.Accept();
+                    return false;
                 }
                 else
                 {
 
-                    driver.SwitchTo().Alert().Accept();
-                    return false;
+                    alert.Accept();
+                    return true;
                 }
             }
             catch
