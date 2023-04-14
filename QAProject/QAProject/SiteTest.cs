@@ -989,7 +989,8 @@ namespace QAProject
 
                 IWebElement BtnRegister = WebsiteElement.btnRegister(driver);
                 BtnRegister.Click();
-                if (driver.SwitchTo().Alert().Text.Contains("successfully"))
+                Thread.Sleep(5000);
+                if (driver.SwitchTo().Alert().Text.Contains("Please enter a valid phone number"))
                 {
                     driver.SwitchTo().Alert().Accept();
                     return true;

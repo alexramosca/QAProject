@@ -384,11 +384,11 @@ namespace QAProject
             //TEST REG05
             if (SiteTest.TestReg05(driver))
             {
-                Console.WriteLine("REG05 - Page Redirect to Registration Page - TEST PASS");
+                Console.WriteLine("REG05 - Testing invalid phone number - TEST PASS");
             }
             else
             {
-                Console.WriteLine("REG05 - Page Redirect to Registration Page - TEST FAIL");
+                Console.WriteLine("REG05 - Testing invalid phone number - TEST FAIL");
             }
             Thread.Sleep(5000);
             //TEST REG06
